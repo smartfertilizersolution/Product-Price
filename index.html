@@ -6,8 +6,7 @@
     <title>Urea, Sulfur, DAP, Diesel EN590, Jet A1, Bitumen, LNG, LPG | Mandate & Trade Facilitation Company | Smart Fertilizer Solution</title>
     <style>
         :root {
-            /* Cyan 30% Magenta 100% Yellow 100% Black 30% -> Rich Deep Maroon */
-            --primary-maroon: #7a0000; 
+            --primary-maroon: #7a0000;
             --light-maroon: #990000;
             --dark-maroon: #5c0000;
             --accent-gold: #d4af37;
@@ -25,15 +24,30 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Top Sticky Info Banner */
+        /* ── PARTICLES ── */
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* ── TOP BAR ── */
         .top-bar {
-            background-color: var(--primary-maroon);
+            background: linear-gradient(90deg, var(--dark-maroon), var(--primary-maroon), var(--dark-maroon));
+            background-size: 300% 100%;
+            animation: barShimmer 5s linear infinite;
             color: var(--text-light);
             text-align: center;
             padding: 10px 20px;
@@ -42,11 +56,17 @@
             letter-spacing: 1px;
             border-bottom: 3px solid var(--accent-gold);
             text-transform: uppercase;
+            position: relative;
+            z-index: 100;
+        }
+        @keyframes barShimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
-        /* Header / Nav Styling */
+        /* ── HEADER ── */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255,255,255,0.97);
             padding: 15px 5%;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             display: flex;
@@ -55,6 +75,14 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, box-shadow 0.3s, padding 0.3s;
+        }
+        header.scrolled {
+            border-bottom-color: var(--accent-gold);
+            box-shadow: 0 6px 25px rgba(122,0,0,0.15);
+            padding: 10px 5%;
         }
 
         .logo-area h1 {
@@ -63,46 +91,39 @@
             font-weight: 800;
             letter-spacing: -0.2px;
         }
-        .logo-area h1 span {
-            color: var(--accent-gold);
-        }
+        .logo-area h1 span { color: var(--accent-gold); }
         .logo-area p {
             font-size: 1rem;
             font-style: italic;
             color: #64748b;
             margin-top: -8px;
         }
-
-        .contact-top {
-            text-align: right;
-            font-size: 0.9rem;
-        }
+        .contact-top { text-align: right; font-size: 0.9rem; }
         .contact-top a {
             color: var(--primary-maroon);
             text-decoration: none;
             font-weight: bold;
             margin-left: 15px;
+            transition: color 0.2s;
         }
+        .contact-top a:hover { color: var(--accent-gold); }
 
-        /* Hero Section */
+        /* ── HERO ── */
         .hero {
-            background: var(--primary-maroon);
-            padding: 50px 5% 40px 5%;
+            background: linear-gradient(135deg, #3d0000 0%, var(--primary-maroon) 55%, #4a0000 100%);
+            padding: 50px 5% 40px;
             color: var(--text-light);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
-        .hero-badge {
-            background-color: var(--accent-gold);
-            color: var(--primary-maroon);
-            padding: 6px 16px;
-            font-weight: bold;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23d4af37' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
         }
 
         .hero h2 {
@@ -110,12 +131,23 @@
             margin-bottom: 15px;
             font-weight: 800;
             color: var(--accent-gold);
+            animation: fadeDown 0.8s ease both;
         }
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-25px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
         .hero .tagline {
             font-size: 1.1rem;
             max-width: 800px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 30px;
             color: var(--text-light);
+            animation: fadeUp 0.8s 0.2s ease both;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .validity-box {
@@ -124,45 +156,30 @@
             display: inline-block;
             background: rgba(0,0,0,0.1);
             font-size: 0.85rem;
+            border-radius: 6px;
+            animation: fadeUp 0.8s 0.35s ease both;
         }
 
-        /* Hero Image Container */
+        /* ── HERO IMAGE ── */
         .hero-image-container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             overflow: hidden;
             border-bottom: 5px solid var(--accent-gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            position: relative;
+            z-index: 1;
         }
         .hero-image-container img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.6s ease;
         }
+        .hero-image-container:hover img { transform: scale(1.02); }
 
-        /* Corporate Offer Intro */
-        .intro-section {
-            padding: 30px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .intro-section h3 {
-            color: var(--primary-maroon);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .intro-section p {
-            font-size: 1.1rem;
-            color: #475569;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        /* Floating Social Icons Styling with Images */
+        /* ── FLOATING SOCIALS ── */
         .floating-socials {
             position: fixed;
             right: 20px;
@@ -181,29 +198,50 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
             background: white;
             box-shadow: 0 4px 6px rgba(0,0,0,0.15);
             border: 2px solid var(--accent-gold);
         }
         .social-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.2) translateX(-5px);
+            box-shadow: 0 8px 20px rgba(122,0,0,0.35);
         }
-        .social-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .social-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ── INTRO ── */
+        .intro-section {
+            padding: 30px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .intro-section h3 {
+            color: var(--primary-maroon);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 15px;
+            text-align: justify;
         }
 
-        /* Product Cards Layout */
+        /* ── SECTION TITLE ── */
         .section-title {
             text-align: center;
-            padding: 20px 0 10px 0;
+            padding: 20px 0 10px;
             font-size: 2rem;
             color: var(--primary-maroon);
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative;
+            z-index: 1;
         }
         .section-title::after {
             content: '';
@@ -211,14 +249,17 @@
             height: 4px;
             background-color: var(--accent-gold);
             display: block;
-            margin: 10px auto 0 auto;
+            margin: 10px auto 0;
         }
 
+        /* ── PRODUCT GRID & CARDS ── */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            padding: 25px 5% 25px 5%;
+            padding: 25px 5%;
+            position: relative;
+            z-index: 1;
         }
 
         .product-card {
@@ -227,12 +268,19 @@
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
             overflow: hidden;
-            transition: transform 0.3s;
             display: flex;
             flex-direction: column;
+            /* 3D tilt handled by JS; base transition for mouse-leave */
+            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+            will-change: transform;
+            /* scroll reveal start state */
+            opacity: 0;
+            transform: translateY(40px);
         }
-        .product-card:hover {
-            transform: translateY(-5px);
+        .product-card.card-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
         }
 
         .product-header {
@@ -243,18 +291,10 @@
             font-weight: bold;
             border-bottom: 4px solid var(--accent-gold);
         }
-        .product-body {
-            padding: 25px;
-            flex-grow: 1;
-        }
-        .product-meta {
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        .product-meta .label {
-            font-weight: bold;
-            color: #64748b;
-        }
+        .product-body { padding: 25px; flex-grow: 1; }
+        .product-meta { margin-bottom: 15px; font-size: 0.95rem; }
+        .product-meta .label { font-weight: bold; color: #64748b; }
+
         .product-price {
             font-size: 1.5rem;
             color: #b45309;
@@ -267,27 +307,20 @@
             border: 1px solid #fef3c7;
         }
 
-        .spec-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.85rem;
-        }
-        .spec-table th, .spec-table td {
-            border: 1px solid #e2e8f0;
-            padding: 6px 10px;
-            text-align: left;
-        }
-        .spec-table th {
-            background-color: #f1f5f9;
-            color: var(--text-dark);
-        }
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85rem; }
+        .spec-table th, .spec-table td { border: 1px solid #e2e8f0; padding: 6px 10px; text-align: left; }
+        .spec-table th { background-color: #f1f5f9; color: var(--text-dark); }
+        .spec-table tr { transition: background 0.2s; }
+        .spec-table tr:hover td { background: #fef9e7; }
 
-        /* Procedures Section */
+        /* ── PROCEDURES ── */
         .procedures-section {
             background-color: #f1f5f9;
             padding: 25px 5%;
+            position: relative;
+            z-index: 1;
         }
+
         .procedure-box {
             background-color: var(--card-bg);
             padding: 25px;
@@ -295,6 +328,23 @@
             margin-bottom: 25px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             border-left: 5px solid var(--primary-maroon);
+            position: relative;
+            overflow: hidden;
+            /* scroll reveal */
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .procedure-box::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold), transparent);
+        }
+        .procedure-box.box-visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         .procedure-box h4 {
             color: var(--primary-maroon);
@@ -302,22 +352,24 @@
             margin-bottom: 15px;
             text-transform: uppercase;
         }
-        .procedure-list {
-            list-style-position: inside;
-            padding-left: 5px;
-        }
+        .procedure-list { list-style-position: inside; padding-left: 5px; }
         .procedure-list li {
             margin-bottom: 12px;
             color: #334155;
             font-size: 0.95rem;
             border-bottom: 1px solid #f1f5f9;
             padding-bottom: 8px;
+            transition: background 0.2s, padding-left 0.2s;
+            border-radius: 4px;
+            padding-left: 6px;
         }
-        .procedure-list li:last-child {
-            border-bottom: none;
+        .procedure-list li:hover {
+            background: #fef9e7;
+            padding-left: 12px;
         }
+        .procedure-list li:last-child { border-bottom: none; }
 
-        /* Note Callout Box */
+        /* ── NOTE BOX ── */
         .note-box {
             background-color: #fffaf0;
             border: 1px solid #feebc8;
@@ -326,31 +378,43 @@
             border-radius: 6px;
             margin: 20px 5%;
             font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        .note-box ul {
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-        .note-box li {
-            margin-bottom: 6px;
-        }
+        .note-box.box-visible { opacity: 1; transform: translateY(0); }
+        .note-box ul { padding-left: 20px; margin-top: 10px; }
+        .note-box li { margin-bottom: 6px; }
 
-        /* Contact Block & Footer Styling */
+        /* ── CONTACT ── */
         .contact-section {
-            background-color: var(--primary-maroon);
+            background: linear-gradient(135deg, var(--dark-maroon), var(--primary-maroon) 50%, var(--dark-maroon));
             color: var(--text-light);
             padding: 40px 5%;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            top: -200px; left: 50%;
+            transform: translateX(-50%);
+            animation: pulseBg 4s ease-in-out infinite;
         }
-        .contact-container h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--accent-gold);
+        @keyframes pulseBg {
+            0%,100% { transform: translateX(-50%) scale(1); }
+            50%      { transform: translateX(-50%) scale(1.15); }
         }
+        .contact-container { max-width: 600px; margin: 0 auto; position: relative; z-index: 2; }
+        .contact-container h2 { font-size: 1.9rem; margin-bottom: 8px; color: var(--accent-gold); }
+
         .btn-whatsapp {
             display: inline-block;
             background-color: #25d366;
@@ -362,24 +426,31 @@
             text-decoration: none;
             margin: 20px 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            animation: pulseGreen 2.5s ease-in-out infinite;
+        }
+        @keyframes pulseGreen {
+            0%,100% { box-shadow: 0 4px 10px rgba(37,211,102,0.35); }
+            50%      { box-shadow: 0 4px 28px rgba(37,211,102,0.7); }
         }
         .btn-whatsapp:hover {
             background-color: #20ba5a;
+            transform: translateY(-4px) scale(1.04);
         }
 
-        /* Footer styling with absolute positioned logo */
+        /* ── FOOTER ── */
         footer {
             background-color: var(--dark-maroon);
             color: #cbd5e1;
             text-align: center;
-            padding: 80px 20px 40px 20px;
+            padding: 80px 20px 40px;
             position: relative;
             border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 1;
         }
         .footer-logo-container {
             position: absolute;
-            left: 130px; /* 30px se barha kar 130px kar diya taaki 1 inch right par ho jaye */
+            left: 130px;
             bottom: 20px;
         }
         .footer-logo-container img {
@@ -389,425 +460,551 @@
             padding: 8px;
             border-radius: 6px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
         }
-        footer p {
-            margin-bottom: 10px;
+        .footer-logo-container img:hover { transform: scale(1.06); }
+        footer p { margin-bottom: 10px; }
+
+        /* ── SCROLL-TO-TOP ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 20px;
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(135deg, var(--primary-maroon), var(--dark-maroon));
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(122,0,0,0.4);
+        }
+        .scroll-top.show { opacity: 1; pointer-events: auto; }
+        .scroll-top:hover { transform: translateY(-4px); }
+
+        /* ── LOADING PORTS / INLINE TITLES ── */
+        .info-title {
+            text-align: center;
+            padding: 10px 5%;
+            font-size: 1.15rem;
+            position: relative;
+            z-index: 1;
         }
 
+        /* ── MEDIA ── */
         @media (max-width: 992px) {
-            .footer-logo-container {
-                position: static;
-                display: inline-block;
-                margin-bottom: 20px;
-            }
-            footer {
-                padding: 40px 20px;
-            }
+            .footer-logo-container { position: static; display: inline-block; margin-bottom: 20px; }
+            footer { padding: 40px 20px; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; gap: 10px; }
+            .contact-top { text-align: center; }
+            .hero h2 { font-size: 1.8rem; }
+            .floating-socials { position: static; flex-direction: row; justify-content: center; margin-bottom: 20px; transform: none; }
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            .contact-top {
-                text-align: center;
-            }
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            .floating-socials {
-                position: static;
-                flex-direction: row;
-                justify-content: center;
-                margin-bottom: 20px;
-                transform: none;
-            }
+        /* ── GENERIC REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            position: relative;
+            z-index: 1;
         }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        Authorised Mandate To The Refinery &bull; Distributor Agent No. AB/8912052/25/KZ
+<canvas id="particle-canvas"></canvas>
+
+<div class="top-bar">
+    Authorised Mandate To The Refinery &bull; Distributor Agent No. AB/8912052/25/KZ
+</div>
+
+<header id="site-header">
+    <div class="logo-area">
+        <h1>SMART <span>FERTILIZER SOLUTION</span></h1>
+        <p>Your East West Connection</p>
+    </div>
+    <div class="contact-top">
+        <a href="mailto:info@smartfertilizer.co">📩 info@smartfertilizer.co</a>
+        <a href="tel:+971561078553">📞 +971 56 107 8553</a>
+    </div>
+</header>
+
+<div class="floating-socials">
+    <a href="https://www.facebook.com/profile.php?id=61567462461604" class="social-icon" title="Facebook" target="_blank"><img src="FB.jpg" alt="FB"></a>
+    <a href="#" class="social-icon" title="Instagram"><img src="IG.jpg" alt="IG"></a>
+    <a href="#" class="social-icon" title="LinkedIn"><img src="IN.jpg" alt="LN"></a>
+    <a href="#" class="social-icon" title="WeChat"><img src="WC.jpg" alt="WC"></a>
+</div>
+
+<section class="hero">
+    <h2>Global Trading Facilitation</h2>
+    <h3 class="tagline">Urea &bull; Sulfur &bull; DAP &bull; ICUMA-45 Sugar &bull; Diesel EN590 &bull; Jet A1 &bull; ESPO Crude Oil &bull; LPG &bull; LNG &bull; Aviation Kerosene (JP54) &bull; Bitumen &bull; Automotive Urea</h3>
+    <div class="validity-box">
+        <span style="color: #fca5a5; font-size: 0.8rem; font-weight: bold; display: block; margin-top: 5px;">REFINERY CAN CHANGE THE PRICE AT ANY TIME</span>
+    </div>
+</section>
+
+<div class="hero-image-container">
+    <img src="Product_Portfolio_Display1.jpg" alt="Product Portfolio Display">
+</div>
+
+<section class="intro-section reveal">
+    <h3>Corporate Offer Portfolio</h3>
+    <p>Smart Fertilizer Solution connects buyers directly with refineries to ensure a transparent and reliable supply process. We facilitate the supply of Urea, Sulfur, DAP, ICUMA-45 Sugar, Diesel EN590, Jet A1, ESPO Crude Oil, LPG, LNG, Aviation Kerosene (JP54), Bitumen, Automotive Urea.</p>
+    <p>As an Authorized Mandate, we receive the ICPO, verify the company and banking details, and submit them to the refinery for approval. Once approved, the SPA is issued directly to the buyer, and all payments are made directly to the refinery.</p>
+    <p>Smart Fertilizer Solution acts solely as a Mandate and Trade Facilitation Company and does not collect payments from buyers.</p>
+</section>
+
+<h2 class="section-title reveal">PRODUCT &amp; PRICE LIST</h2>
+<section class="product-grid">
+
+    <div class="product-card">
+        <div class="product-header">UREA N46% Granular / Prilled</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia / Azerbaijan</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 300,000 MT per Month</div>
+            <div class="product-price">CIF $380 per MT</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
+            <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
+            <table class="spec-table">
+                <tr><th>Property</th><th>Specification</th></tr>
+                <tr><td>Urea Assay (wt %)</td><td>98.0 min</td></tr>
+                <tr><td>Mass portion of nitrogen (N)</td><td>46.2% min</td></tr>
+                <tr><td>Mass portion of Biuret</td><td>0.71% max</td></tr>
+                <tr><td>Apparent Density</td><td>770-809 Kg/m³</td></tr>
+                <tr><td>Free Ammonia</td><td>160 PXT PPM max</td></tr>
+                <tr><td>Granulation</td><td>0.85-3.35 mm (90% min)</td></tr>
+                <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
+            </table>
+        </div>
     </div>
 
-    <header>
-        <div class="logo-area">
-            <h1>SMART <span>FERTILIZER SOLUTION</span></h1>
-            <p>Your East West Connection</p>
+    <div class="product-card">
+        <div class="product-header">Sulfur Granular / Lumps / Powder</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia / Azerbaijan</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 300,000 MT per Month</div>
+            <div class="product-price">CIF $350 per MT</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
+            <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
+            <table class="spec-table">
+                <tr><th>Property</th><th>Typical Specification</th></tr>
+                <tr><td>Form</td><td>Granular / Lumps / Powder</td></tr>
+                <tr><td>Color</td><td>Bright Yellow</td></tr>
+                <tr><td>Purity (as Sulfur)</td><td>99.8% min</td></tr>
+                <tr><td>Ash Content</td><td>0.05% max</td></tr>
+                <tr><td>Moisture Content</td><td>0.5% max</td></tr>
+                <tr><td>Size Distribution</td><td>1-6 mm (90% min)</td></tr>
+                <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
+            </table>
         </div>
-        <div class="contact-top">
-            <a href="mailto:info@smartfertilizer.co">📩 info@smartfertilizer.co</a>
-            <a href="tel:+971561078553">📞 +971 56 107 8553</a>
-        </div>
-    </header>
-
-    <div class="floating-socials">
-        <a href="#" class="social-icon" title="Facebook"><img src="FB.jpg" alt="FB"></a>
-        <a href="#" class="social-icon" title="Instagram"><img src="IG.jpg" alt="IG"></a>
-        <a href="#" class="social-icon" title="LinkedIn"><img src="IN.jpg" alt="LN"></a>
-        <a href="#" class="social-icon" title="WeChat"><img src="WC.jpg" alt="WC"></a>
     </div>
 
-    <section class="hero">
-        <h2>Global Trading Facilitation</h2>
-        <h3 class="tagline">Urea &bull; Sulfur &bull; DAP &bull; ICUMA-45 Sugar &bull; Diesel EN590 &bull; Jet A1 &bull; ESPO Crude Oil &bull; LPG &bull; LNG &bull; Aviation Kerosene (JP54) &bull; Bitumen &bull; Automotive Urea</h3>
-        
-        <div class="validity-box">
-            <span style="color: #fca5a5; font-size: 0.9rem; font-weight: bold; display: block; margin-top: 5px;">REFINERY CAN CHANGE THE PRICE AT ANY TIME</span>
+    <div class="product-card">
+        <div class="product-header">DAP 18-46 (Brown) Fertilizer</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 500,000 MT per Month</div>
+            <div class="product-price">CIF $400 per MT</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
+            <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
+            <table class="spec-table">
+                <tr><th>Property</th><th>Specification</th></tr>
+                <tr><td>Nitrogen (N)</td><td>18% &plusmn;0.2</td></tr>
+                <tr><td>Phosphorus (P&sub2;O&sub5;)</td><td>46% &plusmn;0.5</td></tr>
+                <tr><td>Moisture</td><td>Max 0.5% - 1%</td></tr>
+                <tr><td>Physical Form</td><td>Uniform free-flowing brown granules</td></tr>
+                <tr><td>pH</td><td>7 - 7.5</td></tr>
+                <tr><td>Solubility</td><td>Completely soluble in water</td></tr>
+                <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <div class="hero-image-container">
-        <img src="Product_Portfolio_Display1.jpg" alt="Product Portfolio Display">
+<section class="product-grid">
+    <div class="product-card">
+        <div class="product-header">ICUMA-45 Sugar (Refined &amp; Processed in Oman)</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> ICUMSA 45 (Brazil Raw Sugar)</div>
+            <div class="product-meta"><span class="label">FOB</span> Sohar Port, Oman</div>
+            <div class="product-price">$508 / MT (FOB)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($2 Commission Included.)</p>
+        </div>
     </div>
 
-    <section class="intro-section">
-        <h3>Corporate Offer Portfolio</h3>
-        <p>Smart Fertilizer Solution connects buyers directly with refineries to ensure a transparent and reliable supply process. We facilitate the supply of Urea, Sulfur, DAP, ICUMA-45 Sugar, Diesel EN590, Jet A1, ESPO Crude Oil, LPG, LNG, Aviation Kerosene (JP54), Bitumen, Automotive Urea.</p>
-        <p>As an Authorized Mandate, we receive the ICPO, verify the company and banking details, and submit them to the refinery for approval. Once approved, the SPA is issued directly to the buyer, and all payments are made directly to the refinery.</p>
-        <p>Smart Fertilizer Solution acts solely as a Mandate and Trade Facilitation Company and does not collect payments from buyers.</p>
-    </section>
-
-    <h2 class="section-title">PRODUCT & PRICE LIST</h2>
-    <section class="product-grid">
-        
-        <div class="product-card">
-            <div class="product-header">UREA N46% Granular / Prilled</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia / Azerbaijan</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 300,000 MT per Month</div>
-                <div class="product-price">CIF $380 per MT</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-                
-                <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
-                <table class="spec-table">
-                    <tr><th>Property</th><th>Specification</th></tr>
-                    <tr><td>Urea Assay (wt %)</td><td>98.0 min</td></tr>
-                    <tr><td>Mass portion of nitrogen (N)</td><td>46.2% min</td></tr>
-                    <tr><td>Mass portion of Biuret</td><td>0.71% max</td></tr>
-                    <tr><td>Apparent Density</td><td>770-809 Kg/m³</td></tr>
-                    <tr><td>Free Ammonia</td><td>160 PXT PPM max</td></tr>
-                    <tr><td>Granulation</td><td>0.85-3.35 mm (90% min)</td></tr>
-                    <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
-                </table>
-            </div>
+    <div class="product-card">
+        <div class="product-header">Diesel EN590 - 10/50PPM</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
+            <div class="product-price">$560 / MT (FOB)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
         </div>
+    </div>
 
-        <div class="product-card">
-            <div class="product-header">Sulfur Granular / Lumps / Powder</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia / Azerbaijan</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 300,000 MT per Month</div>
-                <div class="product-price">CIF $350 per MT</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-                
-                <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
-                <table class="spec-table">
-                    <tr><th>Property</th><th>Typical Specification</th></tr>
-                    <tr><td>Form</td><td>Granular / Lumps / Powder</td></tr>
-                    <tr><td>Color</td><td>Bright Yellow</td></tr>
-                    <tr><td>Purity (as Sulfur)</td><td>99.8% min</td></tr>
-                    <tr><td>Ash Content</td><td>0.05% max</td></tr>
-                    <tr><td>Moisture Content</td><td>0.5% max</td></tr>
-                    <tr><td>Size Distribution</td><td>1-6 mm (90% min)</td></tr>
-                    <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
-                </table>
-            </div>
+    <div class="product-card">
+        <div class="product-header">JET A1 Aviation Fuel</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 1,580,000 BBL per Month</div>
+            <div class="product-price">$92 / Barrel (FOB)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($2 / Barrel Commission Included.)</p>
         </div>
+    </div>
+</section>
 
-        <div class="product-card">
-            <div class="product-header">DAP 18-46 (Brown) Fertilizer</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 500,000 MT per Month</div>
-                <div class="product-price">CIF $400 per MT</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-                
-                <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
-                <table class="spec-table">
-                    <tr><th>Property</th><th>Specification</th></tr>
-                    <tr><td>Nitrogen (N)</td><td>18% &plusmn;0.2</td></tr>
-                    <tr><td>Phosphorus (P&sub2;O&sub5;)</td><td>46% &plusmn;0.5</td></tr>
-                    <tr><td>Moisture</td><td>Max 0.5% - 1%</td></tr>
-                    <tr><td>Physical Form</td><td>Uniform free-flowing brown granules</td></tr>
-                    <tr><td>pH</td><td>7 - 7.5</td></tr>
-                    <tr><td>Solubility</td><td>Completely soluble in water</td></tr>
-                    <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
-                </table>
-            </div>
+<section class="product-grid">
+    <div class="product-card">
+        <div class="product-header">ESPO Premium Crude Oil</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 5,000,000 MT per Month</div>
+            <div class="product-price">$110 / Barrel (FOB)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($5 / Barrel Commission Included.)</p>
         </div>
-    </section>
+    </div>
 
-    <section class="product-grid">
-        <div class="product-card">
-            <div class="product-header">ICUMA-45 Sugar (Refined & Processed in Oman)</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> ICUMSA 45 (Brazil Raw Sugar)</div>
-                <div class="product-meta"><span class="label">FOB</span> Sohar Port, Oman</div>
-                <div class="product-price">$508 / MT (FOB)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($2 Commission Included.)</p>
-            </div>
+    <div class="product-card">
+        <div class="product-header">Liquid Petroleum Gas (LPG)</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
+            <div class="product-price">$320 / MT (CIF)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
         </div>
+    </div>
 
-        <div class="product-card">
-            <div class="product-header">Diesel EN590 - 10/50PPM</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
-                <div class="product-price">$560 / MT (FOB)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            </div>
+    <div class="product-card">
+        <div class="product-header">Liquefied Natural Gas (LNG)</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 2,000,000 MT per Month</div>
+            <div class="product-price">$340 / MT (CIF)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
         </div>
+    </div>
+</section>
 
-        <div class="product-card">
-            <div class="product-header">JET A1 Aviation Fuel</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 1,580,000 BBL per Month</div>
-                <div class="product-price">$92 / Barrel (FOB)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($2 / Barrel Commission Included.)</p>
-            </div>
+<section class="product-grid">
+    <div class="product-card">
+        <div class="product-header">Aviation Kerosene Colonial Grade 54 Jet Fuel (JP54)</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 2,000,000 MT per Month</div>
+            <div class="product-price">$95 / Barrel (FOB)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($5 / Barrel Commission Included.)</p>
         </div>
-    </section>
+    </div>
 
-    <section class="product-grid">
-        <div class="product-card">
-            <div class="product-header">ESPO Premium Crude Oil</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 5,000,000 MT per Month</div>
-                <div class="product-price">$110 / Barrel (FOB)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($5 / Barrel Commission Included.)</p>
-            </div>
+    <div class="product-card">
+        <div class="product-header">Bitumen Grade 40/50, 60/70, 80/100</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 500,000 MT per Month</div>
+            <div class="product-price">$350 / MT (CIF)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
         </div>
+    </div>
 
-        <div class="product-card">
-            <div class="product-header">Liquid Petroleum Gas (LPG)</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
-                <div class="product-price">$320 / MT (CIF)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            </div>
+    <div class="product-card">
+        <div class="product-header">Automotive Urea</div>
+        <div class="product-body">
+            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
+            <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
+            <div class="product-price">$420 / MT (CIF)</div>
+            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
         </div>
+    </div>
+</section>
 
-        <div class="product-card">
-            <div class="product-header">Liquefied Natural Gas (LNG)</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 2,000,000 MT per Month</div>
-                <div class="product-price">$340 / MT (CIF)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="product-grid">
-        <div class="product-card">
-            <div class="product-header">Aviation Kerosene Colonial Grade 54 Jet Fuel (JP54)</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 2,000,000 MT per Month</div>
-                <div class="product-price">$95 / Barrel (FOB)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($5 / Barrel Commission Included.)</p>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-header"> Bitumen Grade 40/50, 60/70, 80/100</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 500,000 MT per Month</div>
-                <div class="product-price">$350 / MT (CIF)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-header">Automotive Urea</div>
-            <div class="product-body">
-                <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-                <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
-                <div class="product-price">$420 / MT (CIF)</div>
-                <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            </div>
-        </div>
-    </section>
-
-<h3 class="section-title" style="margin-bottom: 20px; text-transform: none !important;">
+<h3 class="section-title reveal" style="margin-bottom: 20px; text-transform: none !important;">
     <span style="color: var(--dark-gold);">Loading Port:</span>
-    <span style="color: #000;">Aktau / Batumi / Rotterdam / Jurong / Houston / Vladivostok / Novorossiysk / Kozmino / Ust-Luga / Taman</span></h3>
+    <span style="color: #000;">Aktau / Batumi / Rotterdam / Jurong / Houston / Vladivostok / Novorossiysk / Kozmino / Ust-Luga / Taman</span>
+</h3>
 
-<h3 class="section-title" style="margin-bottom: 20px; text-transform: none !important;">
-    <span style="color: #990000;">The buyer’s Lighthouse / Tank Farm TSA can be reviewed by the refinery.</span></h3>
+<h3 class="section-title reveal" style="margin-bottom: 20px; text-transform: none !important;">
+    <span style="color: #990000;">The buyer's Lighthouse / Tank Farm TSA can be reviewed by the refinery.</span>
+</h3>
 
-    <section class="procedures-section">
-        <h2 class="section-title" style="margin-bottom: 20px;">Refinery Working Procedures</h2>
+<section class="procedures-section">
+    <h2 class="section-title" style="margin-bottom: 20px;">Refinery Working Procedures</h2>
 
-        <div class="procedure-box">
-            <h4>Transaction Procedures (FOB Fujairah, Rotterdam, Houston, Jurong)</h4>
-            <ol class="procedure-list">
-                <li>The Buyer Issue an ICPO. Containing the seller's work procedures and Banking Details along with TSA (TANK STORAGE AGREEMENT), Buyer Certificate of incorporation, Company Profile (CP) and International Passport Copy of the CEO.</li>
-                <li>Seller issues ICC Warning Letter and Commercial Invoice (CI) of products in tank at port, buyer signs and returns the documents with acceptance and commitment letter stating to adhere to seller procedure.</li>
-                <li>The seller issues a copy of the SGS Report strictly JUST to the buyer's Tank farm Company only to verify the SGS Report.</li>
-                <li>After confirmation of successful verification of SGS Report only by Buyer's Tank Farm Company. The Buyer pays his Tank Company for 6 Days (3 days seller 3 days buyer) TSR, at first seller pay 3 days after confirming by tank farm, buyer will pay 3 days then sends 6 days TSR to the Seller. All Parties must sign NCNDA and IMFPA for endorsements.</li>
-                <li>The seller issues the following POP documents to the buyer: (a) SGS report for quality and quantity not older than 48 hours, (b) Product Certificate of Origin, (c) Product injection report, (d) Tank storage receipt with full GPS coordinates, (e) Unconditional dip test authorization letter, [f] Authorization to sell and collect, (h) Q&A.</li>
-                <li>After verification of the documents, the injection will be commenced and after injection the buyer makes payment for the total value of the product injected into the tank via MT103-TT.</li>
-                <li>After receiving confirmation of Buyer Payment, the seller immediately transfers the title ownership to the buyer.</li>
-                <li>Seller sends payment of all intermediaries involved in the transaction 24 hours after receiving confirmation of Buyer Payment as per signed & sealed NCNDA/IMFPA which is notarized by Public Notary in Kazakhstan and then monthly remittance is continued as per terms and terms of the contract of sale and purchase agreement between the buyer and seller.</li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>Transaction Procedure Tank to Tank No: 2</h4>
-            <ol class="procedure-list">
-                <li>The Buyer Issue an ICPO. Containing the seller's work procedures and Banking Details along with TSA (TANK STORAGE AGREEMENT), Buyer Certificate of incorporation, Company Profile (CP) and International Passport Copy of the CEO.</li>
-                <li>Seller issue to Buyer Commercial Invoice + ICC, Buyer sign & returns the CI to Seller.</li>
-                <li>Seller rent the Buyer's Tank for 3 days for injection, Buyer also pays both nominated Tank Storage Facility for 2 days After buyer's tank farm company has received payment from the Seller company and issues 5 days TSR. Seller provides Buyer the below POP Documents: a. Injection Report, b. Tank Storage Receipt, c. Tank Farm Bar-code information, d. letter Of Commitment to Supply, e. Registration Certificate, f. Fresh SGS Q&Q Report 48 Hours, g. Unconditional DTA.</li>
-                <li>Buyer conduct Dip-Test, via SGS and after Dip-Test, Buyer makes payment as per MT103 wire transfer/TT according to the commercial Invoice, Buyer lifts the product.</li>
-                <li>Seller transfers the title of ownership as per Buyer's instruction.</li>
-                <li>Seller pays all intermediaries of the Seller Side. Buyer pays all intermediaries of the Buyer Side involved in the transaction.</li>
-                <li>Subsequently monthly shipment continues as per terms and conditions of the sales ad purchase Agreement contract between Buyer and Seller to be issued and accepted.</li>
-                <li>Seller and Buyer will respect NCNDA-IMFPA as agreed also on the contract.</li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>Approved Table Talk Meeting Procedure FOB ASWP (Non-Negotiable)</h4>
-            <ol class="procedure-list">
-                <li>Buyer issue ICPO and TSA for seller verification.</li>
-                <li>Seller issue Commercial Invoice C.I buyer sign and return for legalization.</li>
-                <li>Buyer open communication with seller and buyer tank farm, for scheduling of table talk meeting in buyer tank farm office, in the table talk meeting seller provide below document for buyer verification: a. FRESH SGS, b. INJECTION REPORT, c. PRODUCT PASSPORT, d. TSR, e. UDTA, f. ATV.</li>
-                <li>After the meeting and verification of the POP, buyer move to sellers tank for physical verification etc., Upon successful verification seller and buyer sign TANK TO TANK INJECTION AGREEMENT.</li>
-                <li>Seller transfers all title document and shipping document to buyer name and hand them over to buyer, upon confirmation of the documents buyer immediately pay for full product by MT103 or TT.</li>
-                <li>Upon receive of buyer payment seller Injection follows immediately.</li>
-                <li>Seller pays all intermediaries involve.</li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>Refinery Procedure TTV (Tank to Vessel)</h4>
-            <ol class="procedure-list">
-                <li>Buyer issues ICPO must be with buyer company letterhead containing the seller's working procedure with banking details scanned copy of buyer's Passport data page Buyer's for seller's validation. Seller issues a commercial invoice of the product in tanks at the port, and the buyer signs and returns a Commercial Invoice to the seller.</li>
-                <li>Upon return of the endorsed CI, the Seller release to the buyer the following Partial PPOP documents: a. Commitment Letter to Supply, b. Certificate of Origin, c. Statement of Product Availability, d. Authorization to sell/collect, e. Export license.</li>
-                <li>Buyer leased the seller tank for one day tank extension payment to enable tank clearance and for the buyer to gain a port legal access permit to execute a dip test for quantity and quality inspection and fresh inspection/report by SGS in seller Tank.</li>
-                <li>Upon confirmation of the buyer securing tank clearance and port legal access permit to the product, the seller issues DTA for the buyer to proceed with the dip test and the buyer and his SGS Inspection team conduct a dip test on the product in the seller tank.</li>
-                <li>Upon the satisfactory result of the dip test, the Seller's storage Company issues the buyer, the Notice of Readiness (NOR) to inject the product.</li>
-                <li>The buyer provides Q88 and ATI from his logistics/Shipping Company and makes the Vessel available for the injection process to commence as scheduled.</li>
-                <li>Upon completion of the Injection, the Seller releases to the buyer the below POP documents: a. Product SGS Report, b. Pipeline Injection Report, c. Authority to Sell and Collect (ATSC), d. Product passport (analysis test report), e. NCNDA/IMFPA to all intermediaries involved in the Transaction and to the buyer, f. Endorsed NCNDA/IMFPA.</li>
-                <li>Upon confirmation of the above pop document by the buyers and the Endorsement of NCNDA/IMFPA the Buyer immediately pays for the total cost of the product value injected into the Ship/vessel through MT103 TT wire transfer. The seller pays all intermediaries involved in the transaction upon receipt of the payment within 24hrs and Transfers the Title of Ownership certificate of the product to the buyer. Buyer and seller agree to roll over to a one-year contract to continue the transaction, with monthly deliveries x 12 months. <br><span style="color: #dd6b20; font-size: 0.85rem; font-weight: bold;">Note: The amount paid for the day tank extension to secure tank clearance and port legal access permit will be deducted when the buyer is paying for the full product.</span></li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>Transaction Procedures FOB - Tank to Vessel (TTV) No. 2</h4>
-            <ol class="procedure-list">
-                <li>Buyer issues ICPO containing the seller's procedure with banking details and scanned copy of buyer's passport along with Charter Party Agreement (CPA), for Seller's validation.</li>
-                <li>Seller issues Commercial Invoice (CI) for the available products in Tank at the Port, for Buyer's review and endorsement and return along with Buyer's Charter Party Agreement (CPA).</li>
-                <li>Seller issues to buyer Tank-to-Vessel Injection Agreement (TTVIA) to be endorsed by both Seller and Buyer's Logistic Company.</li>
-                <li>Upon returned of the endorsed TTVIA, Seller release to Buyer the following PPOP documents: a. Copy of Tank Storage Receipt (TSR), b. Copy of Commitment Letter to Supply, c. Copy of Export License, d. Copy of Authorization to Verify (ATV) (call or email).</li>
-                <li>Buyer contacts the Seller's Storage Company to verify the availability of the product and to obtain access to enable Buyer and his team conduct dip test on the product in the Tank.</li>
-                <li>Seller upon confirmation of Buyer securing legal access to the product, issues Dip Test Authorization (DTA) for Buyer to proceed for the dip test.</li>
-                <li>Upon satisfactory result of the dip test on the product by the Buyer and his team, Seller's storage Company issue to Buyer the Notice of Readiness (NOR) to inject the product.</li>
-                <li>Buyer issues Q88 and makes available the Vessel for the injection process to commence as schedule.</li>
-                <li>Upon completion of the Injection, Seller releases to buyer the below POP documents: a. Copy of Product SGS Report, b. Copy of Injection Report, c. Copy of Authority to Sell and Collect (ATSC), d. Copy of Product passport (analysis test report), e. Copy of Certificate of Origin, f. Copy of NCNDA/IMFPA.</li>
-                <li>Buyer immediately pays for the total cost of the product value injected into the vessel through MT103 TT wire transfer.</li>
-                <li>Seller Upon confirmation of the payment, pays all intermediaries involve in the transaction.</li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>CIF Refinery Transacting Procedure</h4>
-            <ol class="procedure-list">
-                <li>Buyer issues CP, ICPO inserting seller's terms and procedures.</li>
-                <li>Seller issues draft contract/SPA which is open for amendments.</li>
-                <li>Buyer returns the signed draft contract with NCNDA/IMFPA and a letter of guarantee to perform.</li>
-                <li>Seller submits the signed SPA for registration and legalization with the appropriate authorities.</li>
-                <li>Seller sends the below listed partial pop documents to buyer via mail: a. Statement of availability of product, b. Commitment to supply the product, c. Certificate of origin, d. Product Passport, e. Export license.</li>
-                <li>Buyer within 5-7 banking days issues SBLC swift MT760 according to Seller's fiduciary bank verbiage to seller nominated fiduciary offshore bank account for first month shipment, and whereby buyer fail to issue payment instrument within 5-7 banking days, buyer will make cash deposit of $180,000 by TT wire transfer for allocation and security guarantee to enable seller charter vessel and commence shipment, and this payment shall be deducted from the total cost of product after inspection at discharge port.</li>
-                <li>Seller bank issues the full set of proof of product (pop) and shipping document with 2% pb (performance bond) to buyer's bank. QQ Certificate & Product passport docs, all will be issued on time.</li>
-                <li>Shipment commences immediately as scheduled in the contract.</li>
-                <li>Buyer pays for the total product value via TT/MT103 to the seller's bank after successful SGS/CIQ inspection at discharge port and title of product ownership transferred to buyer.</li>
-                <li>Seller pays all intermediaries involved in transaction as per signed NCNDA/IMFPA.</li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>CIF Working Procedure No: 2</h4>
-            <ol class="procedure-list">
-                <li>Buyer issues ICPO (Irrevocable Corporate Purchase Order) after acceptance of Seller's terms, Conditions and Procedure.</li>
-                <li>Seller issues draft Contract, buyer countersigned and returns back, and seller present CPA (Charter Party Agreement) from shipping company for buyer signing.</li>
-                <li>Buyer signs the Charter Party Agreement with the shipping company and sends copy of the signed Charter Party Agreement to seller.</li>
-                <li>Seller issues Partial POP documents to buyer to verify the availability of the product: i. Product Passport dip-test certificate, ii. Refinery commitment to supply, iii. Refinery statement of product availability, iv. Company registration certificate.</li>
-                <li>Within 72 hours of receipt of above POP documents, Buyer and Seller pay the shipping cost 50%/50% each to the shipping company to transport the product to Buyer destination port, which serves as commitment assurance that Buyer will not default in the transaction. <span style="color: #dd6b20; font-size: 0.85rem; font-weight: bold;">The payment shall be deducted from the total cost of product.</span></li>
-                <li>Delivery commence as schedule and Seller issues the full POP documents to Buyer;</li>
-                <li>Upon arrival of product at Buyer's destination port, Buyer conduct Dip-Test inspection of the product by SGS / CIQ inspection and makes payment for the product by MT103 after Q&Q inspection.</li>
-                <li>Seller makes payments to all involved intermediaries / mandates in accordance with the signed NCNDA/IMFPA.</li>
-                <li>Buyer issue nontransferable MT700 IRDLC (Irrevocable Revolving Documentary Letter of Credit) to Seller for the subsequent 12-month delivery.</li>
-            </ol>
-        </div>
-
-        <div class="procedure-box">
-            <h4>FOB Refinery Procedure (Urea, Sulfur, DAP & Automotive Urea)</h4>
-            <ol class="procedure-list">
-                <li>Buyer issues ICPO with the seller terms and conditions and their warehouse agreement.</li>
-                <li>Upon seller satisfaction of the ICPO from the buyer, the seller issues commercial invoice.</li>
-                <li>Buyer studies and signs the commercial invoice within 3 working days and returns back to the seller.</li>
-                <li>Upon the seller receives the signed copy of the commercial invoice from the buyer, seller issues to the buyer the below PPOP document: a) Statement of availability. b) Commitment Letter to supply.</li>
-                <li>Upon buyer receiving the PPOP document seller requests the buyer to provide a warehouse receipt.</li>
-                <li>Upon receiving the warehouse receipt seller shall issue SGS to conduct test.</li>
-                <li>Upon SGS conducting the test, loading shall commence into warehouse.</li>
-                <li>Upon the completion of the loading seller shall issue to the buyer the following POP Document: a) Authorization to sell and collect. b) Certificate of Origin. c) Fresh SGS Report. d) Affidavit of Transfer of ownership of product. e) Upon buyer receiving the POP document buyer signs the affidavit of transfer of ownership certificate.</li>
-                <li>Buyer makes 100% payment by MT103/TT wire transfer for the total product and Seller pays commission to all intermediaries Involve in the transaction within 24 hours after confirmation of the buyer's payment then seller issues buyer the Tittle of Ownership.</li>
-                <li>SELLER ISSUES DRAFT CONTRACT FOR BUYER TO REVIEW FOR R&E MONTHLY DELIVERIES.</li>
-                <li>Buyer reviews and approves the contract and issues SBLC/IRDLC irrevocable, non transferable, auto revolving for 12months, Shipment value, documentary letter of credit for the length of contract and for each lift-able as scheduled.</li>
-                <li>Buyer pays after product is confirmed in warehouse by MT103 Wire Transfer on each monthly quantity.</li>
-                <li>The subsequent delivery shall commence according to the terms and conditions of the contract, and mandates/intermediaries receive their commissions according to monthly delivery.</li>
-            </ol>
-        </div>
-    </section>
-
-    <div class="note-box">
-        <strong>&nbsp; Buyer Eligibility for Port Visit (Q88 Requirement)</strong>
-        <ul>
-            <li><strong>If the buyer wishes to physically inspect the port, they may do so, but they must first submit their Q88. This requirement is in place because the title holder/seller does not invite unverified or non-serious buyers to the port, as some individuals attempt to visit only to collect samples or for fraudulent purposes. Therefore, providing the Q88 is necessary as it confirms the buyer’s seriousness, genuine interest, and readiness for purchase. The seller does not wish to waste time and is fully committed to supplying the product only to serious and verified buyers.</strong></li>
-        </ul>
+    <div class="procedure-box">
+        <h4>Transaction Procedures (FOB Fujairah, Rotterdam, Houston, Jurong)</h4>
+        <ol class="procedure-list">
+            <li>The Buyer Issue an ICPO. Containing the seller's work procedures and Banking Details along with TSA (TANK STORAGE AGREEMENT), Buyer Certificate of incorporation, Company Profile (CP) and International Passport Copy of the CEO.</li>
+            <li>Seller issues ICC Warning Letter and Commercial Invoice (CI) of products in tank at port, buyer signs and returns the documents with acceptance and commitment letter stating to adhere to seller procedure.</li>
+            <li>The seller issues a copy of the SGS Report strictly JUST to the buyer's Tank farm Company only to verify the SGS Report.</li>
+            <li>After confirmation of successful verification of SGS Report only by Buyer's Tank Farm Company. The Buyer pays his Tank Company for 6 Days (3 days seller 3 days buyer) TSR, at first seller pay 3 days after confirming by tank farm, buyer will pay 3 days then sends 6 days TSR to the Seller. All Parties must sign NCNDA and IMFPA for endorsements.</li>
+            <li>The seller issues the following POP documents to the buyer: (a) SGS report for quality and quantity not older than 48 hours, (b) Product Certificate of Origin, (c) Product injection report, (d) Tank storage receipt with full GPS coordinates, (e) Unconditional dip test authorization letter, [f] Authorization to sell and collect, (h) Q&amp;A.</li>
+            <li>After verification of the documents, the injection will be commenced and after injection the buyer makes payment for the total value of the product injected into the tank via MT103-TT.</li>
+            <li>After receiving confirmation of Buyer Payment, the seller immediately transfers the title ownership to the buyer.</li>
+            <li>Seller sends payment of all intermediaries involved in the transaction 24 hours after receiving confirmation of Buyer Payment as per signed &amp; sealed NCNDA/IMFPA which is notarized by Public Notary in Kazakhstan and then monthly remittance is continued as per terms and terms of the contract of sale and purchase agreement between the buyer and seller.</li>
+        </ol>
     </div>
 
-    <div class="note-box">
-        <strong>&nbsp; Crucial Operational Notes:</strong>
-        <ul>
-            <li>Quantity: 12,000 MT on trial basis.</li>
-            <li>Buyer to submit ICPO along with basic company details (registration/license).</li>
-            <li>Quantity: POF or Bank Statement may be requested for verification purposes. Passport copy may be provided for KYC compliance if required.</li>
-            <li>Payment Terms: SBLC (LC issuance time: 7 to 10 banking days).</li>
-            <li>Quantity: Proof of Funds via MT199/MT799 (bank-to-bank SWIFT) may be requested after signing the SPA.</li>
-            <li>After receipt of ICPO, the refinery will review the offer. If approved, SPA will be issued directly to the buyer via email.</li>
-            <li>Smart Fertilizer Solution shall have the right to coordinate directly with the buyer regarding ICPO details and transaction follow-up.</li>
-        </ul>
+    <div class="procedure-box">
+        <h4>Transaction Procedure Tank to Tank No: 2</h4>
+        <ol class="procedure-list">
+            <li>The Buyer Issue an ICPO. Containing the seller's work procedures and Banking Details along with TSA (TANK STORAGE AGREEMENT), Buyer Certificate of incorporation, Company Profile (CP) and International Passport Copy of the CEO.</li>
+            <li>Seller issue to Buyer Commercial Invoice + ICC, Buyer sign &amp; returns the CI to Seller.</li>
+            <li>Seller rent the Buyer's Tank for 3 days for injection, Buyer also pays both nominated Tank Storage Facility for 2 days After buyer's tank farm company has received payment from the Seller company and issues 5 days TSR. Seller provides Buyer the below POP Documents: a. Injection Report, b. Tank Storage Receipt, c. Tank Farm Bar-code information, d. letter Of Commitment to Supply, e. Registration Certificate, f. Fresh SGS Q&amp;Q Report 48 Hours, g. Unconditional DTA.</li>
+            <li>Buyer conduct Dip-Test, via SGS and after Dip-Test, Buyer makes payment as per MT103 wire transfer/TT according to the commercial Invoice, Buyer lifts the product.</li>
+            <li>Seller transfers the title of ownership as per Buyer's instruction.</li>
+            <li>Seller pays all intermediaries of the Seller Side. Buyer pays all intermediaries of the Buyer Side involved in the transaction.</li>
+            <li>Subsequently monthly shipment continues as per terms and conditions of the sales ad purchase Agreement contract between Buyer and Seller to be issued and accepted.</li>
+            <li>Seller and Buyer will respect NCNDA-IMFPA as agreed also on the contract.</li>
+        </ol>
     </div>
 
-    <section class="contact-section">
-        <div class="contact-container">
-            <h2>Submit your ICPO to Smart Fertilizer Solution</h2>
-            <h2 style="margin-bottom: 20px;">Transparent and reliable supply.</h2>
-            <a href="https://wa.me/971561078553" class="btn-whatsapp" target="_blank">&#128172; Connect via WhatsApp</a>
-            <p style="margin-top: 10px; font-size: 1.0rem;">Email Support: <strong>info@smartfertilizer.co</strong></p>
-            <p font-size: 1.2rem;">Corporate Call Desk: <strong>+971 56 107 8553</strong></p>
-        </div>
-    </section>
+    <div class="procedure-box">
+        <h4>Approved Table Talk Meeting Procedure FOB ASWP (Non-Negotiable)</h4>
+        <ol class="procedure-list">
+            <li>Buyer issue ICPO and TSA for seller verification.</li>
+            <li>Seller issue Commercial Invoice C.I buyer sign and return for legalization.</li>
+            <li>Buyer open communication with seller and buyer tank farm, for scheduling of table talk meeting in buyer tank farm office, in the table talk meeting seller provide below document for buyer verification: a. FRESH SGS, b. INJECTION REPORT, c. PRODUCT PASSPORT, d. TSR, e. UDTA, f. ATV.</li>
+            <li>After the meeting and verification of the POP, buyer move to sellers tank for physical verification etc., Upon successful verification seller and buyer sign TANK TO TANK INJECTION AGREEMENT.</li>
+            <li>Seller transfers all title document and shipping document to buyer name and hand them over to buyer, upon confirmation of the documents buyer immediately pay for full product by MT103 or TT.</li>
+            <li>Upon receive of buyer payment seller Injection follows immediately.</li>
+            <li>Seller pays all intermediaries involve.</li>
+        </ol>
+    </div>
 
-    <footer>
-        <div class="footer-logo-container">
-            <img src="SMARTLOGO-01.JPG" alt="Smart Fertilizer Solution Logo">
-        </div>
-        <p>&copy; 2026 Smart Fertilizer Solution&trade;. All Rights Reserved.</p>
-        <p>Muscat, Oman  -  Karachi, Pakistan.</p>
-    </footer>
+    <div class="procedure-box">
+        <h4>Refinery Procedure TTV (Tank to Vessel)</h4>
+        <ol class="procedure-list">
+            <li>Buyer issues ICPO must be with buyer company letterhead containing the seller's working procedure with banking details scanned copy of buyer's Passport data page Buyer's for seller's validation. Seller issues a commercial invoice of the product in tanks at the port, and the buyer signs and returns a Commercial Invoice to the seller.</li>
+            <li>Upon return of the endorsed CI, the Seller release to the buyer the following Partial PPOP documents: a. Commitment Letter to Supply, b. Certificate of Origin, c. Statement of Product Availability, d. Authorization to sell/collect, e. Export license.</li>
+            <li>Buyer leased the seller tank for one day tank extension payment to enable tank clearance and for the buyer to gain a port legal access permit to execute a dip test for quantity and quality inspection and fresh inspection/report by SGS in seller Tank.</li>
+            <li>Upon confirmation of the buyer securing tank clearance and port legal access permit to the product, the seller issues DTA for the buyer to proceed with the dip test and the buyer and his SGS Inspection team conduct a dip test on the product in the seller tank.</li>
+            <li>Upon the satisfactory result of the dip test, the Seller's storage Company issues the buyer, the Notice of Readiness (NOR) to inject the product.</li>
+            <li>The buyer provides Q88 and ATI from his logistics/Shipping Company and makes the Vessel available for the injection process to commence as scheduled.</li>
+            <li>Upon completion of the Injection, the Seller releases to the buyer the below POP documents: a. Product SGS Report, b. Pipeline Injection Report, c. Authority to Sell and Collect (ATSC), d. Product passport (analysis test report), e. NCNDA/IMFPA to all intermediaries involved in the Transaction and to the buyer, f. Endorsed NCNDA/IMFPA.</li>
+            <li>Upon confirmation of the above pop document by the buyers and the Endorsement of NCNDA/IMFPA the Buyer immediately pays for the total cost of the product value injected into the Ship/vessel through MT103 TT wire transfer. The seller pays all intermediaries involved in the transaction upon receipt of the payment within 24hrs and Transfers the Title of Ownership certificate of the product to the buyer. Buyer and seller agree to roll over to a one-year contract to continue the transaction, with monthly deliveries x 12 months. <br><span style="color: #dd6b20; font-size: 0.85rem; font-weight: bold;">Note: The amount paid for the day tank extension to secure tank clearance and port legal access permit will be deducted when the buyer is paying for the full product.</span></li>
+        </ol>
+    </div>
 
+    <div class="procedure-box">
+        <h4>Transaction Procedures FOB - Tank to Vessel (TTV) No. 2</h4>
+        <ol class="procedure-list">
+            <li>Buyer issues ICPO containing the seller's procedure with banking details and scanned copy of buyer's passport along with Charter Party Agreement (CPA), for Seller's validation.</li>
+            <li>Seller issues Commercial Invoice (CI) for the available products in Tank at the Port, for Buyer's review and endorsement and return along with Buyer's Charter Party Agreement (CPA).</li>
+            <li>Seller issues to buyer Tank-to-Vessel Injection Agreement (TTVIA) to be endorsed by both Seller and Buyer's Logistic Company.</li>
+            <li>Upon returned of the endorsed TTVIA, Seller release to Buyer the following PPOP documents: a. Copy of Tank Storage Receipt (TSR), b. Copy of Commitment Letter to Supply, c. Copy of Export License, d. Copy of Authorization to Verify (ATV) (call or email).</li>
+            <li>Buyer contacts the Seller's Storage Company to verify the availability of the product and to obtain access to enable Buyer and his team conduct dip test on the product in the Tank.</li>
+            <li>Seller upon confirmation of Buyer securing legal access to the product, issues Dip Test Authorization (DTA) for Buyer to proceed for the dip test.</li>
+            <li>Upon satisfactory result of the dip test on the product by the Buyer and his team, Seller's storage Company issue to Buyer the Notice of Readiness (NOR) to inject the product.</li>
+            <li>Buyer issues Q88 and makes available the Vessel for the injection process to commence as schedule.</li>
+            <li>Upon completion of the Injection, Seller releases to buyer the below POP documents: a. Copy of Product SGS Report, b. Copy of Injection Report, c. Copy of Authority to Sell and Collect (ATSC), d. Copy of Product passport (analysis test report), e. Copy of Certificate of Origin, f. Copy of NCNDA/IMFPA.</li>
+            <li>Buyer immediately pays for the total cost of the product value injected into the vessel through MT103 TT wire transfer.</li>
+            <li>Seller Upon confirmation of the payment, pays all intermediaries involve in the transaction.</li>
+        </ol>
+    </div>
+
+    <div class="procedure-box">
+        <h4>CIF Refinery Transacting Procedure</h4>
+        <ol class="procedure-list">
+            <li>Buyer issues CP, ICPO inserting seller's terms and procedures.</li>
+            <li>Seller issues draft contract/SPA which is open for amendments.</li>
+            <li>Buyer returns the signed draft contract with NCNDA/IMFPA and a letter of guarantee to perform.</li>
+            <li>Seller submits the signed SPA for registration and legalization with the appropriate authorities.</li>
+            <li>Seller sends the below listed partial pop documents to buyer via mail: a. Statement of availability of product, b. Commitment to supply the product, c. Certificate of origin, d. Product Passport, e. Export license.</li>
+            <li>Buyer within 5-7 banking days issues SBLC swift MT760 according to Seller's fiduciary bank verbiage to seller nominated fiduciary offshore bank account for first month shipment, and whereby buyer fail to issue payment instrument within 5-7 banking days, buyer will make cash deposit of $180,000 by TT wire transfer for allocation and security guarantee to enable seller charter vessel and commence shipment, and this payment shall be deducted from the total cost of product after inspection at discharge port.</li>
+            <li>Seller bank issues the full set of proof of product (pop) and shipping document with 2% pb (performance bond) to buyer's bank. QQ Certificate &amp; Product passport docs, all will be issued on time.</li>
+            <li>Shipment commences immediately as scheduled in the contract.</li>
+            <li>Buyer pays for the total product value via TT/MT103 to the seller's bank after successful SGS/CIQ inspection at discharge port and title of product ownership transferred to buyer.</li>
+            <li>Seller pays all intermediaries involved in transaction as per signed NCNDA/IMFPA.</li>
+        </ol>
+    </div>
+
+    <div class="procedure-box">
+        <h4>CIF Working Procedure No: 2</h4>
+        <ol class="procedure-list">
+            <li>Buyer issues ICPO (Irrevocable Corporate Purchase Order) after acceptance of Seller's terms, Conditions and Procedure.</li>
+            <li>Seller issues draft Contract, buyer countersigned and returns back, and seller present CPA (Charter Party Agreement) from shipping company for buyer signing.</li>
+            <li>Buyer signs the Charter Party Agreement with the shipping company and sends copy of the signed Charter Party Agreement to seller.</li>
+            <li>Seller issues Partial POP documents to buyer to verify the availability of the product: i. Product Passport dip-test certificate, ii. Refinery commitment to supply, iii. Refinery statement of product availability, iv. Company registration certificate.</li>
+            <li>Within 72 hours of receipt of above POP documents, Buyer and Seller pay the shipping cost 50%/50% each to the shipping company to transport the product to Buyer destination port, which serves as commitment assurance that Buyer will not default in the transaction. <span style="color: #dd6b20; font-size: 0.85rem; font-weight: bold;">The payment shall be deducted from the total cost of product.</span></li>
+            <li>Delivery commence as schedule and Seller issues the full POP documents to Buyer;</li>
+            <li>Upon arrival of product at Buyer's destination port, Buyer conduct Dip-Test inspection of the product by SGS / CIQ inspection and makes payment for the product by MT103 after Q&amp;Q inspection.</li>
+            <li>Seller makes payments to all involved intermediaries / mandates in accordance with the signed NCNDA/IMFPA.</li>
+            <li>Buyer issue nontransferable MT700 IRDLC (Irrevocable Revolving Documentary Letter of Credit) to Seller for the subsequent 12-month delivery.</li>
+        </ol>
+    </div>
+
+    <div class="procedure-box">
+        <h4>FOB Refinery Procedure (Urea, Sulfur, DAP &amp; Automotive Urea)</h4>
+        <ol class="procedure-list">
+            <li>Buyer issues ICPO with the seller terms and conditions and their warehouse agreement.</li>
+            <li>Upon seller satisfaction of the ICPO from the buyer, the seller issues commercial invoice.</li>
+            <li>Buyer studies and signs the commercial invoice within 3 working days and returns back to the seller.</li>
+            <li>Upon the seller receives the signed copy of the commercial invoice from the buyer, seller issues to the buyer the below PPOP document: a) Statement of availability. b) Commitment Letter to supply.</li>
+            <li>Upon buyer receiving the PPOP document seller requests the buyer to provide a warehouse receipt.</li>
+            <li>Upon receiving the warehouse receipt seller shall issue SGS to conduct test.</li>
+            <li>Upon SGS conducting the test, loading shall commence into warehouse.</li>
+            <li>Upon the completion of the loading seller shall issue to the buyer the following POP Document: a) Authorization to sell and collect. b) Certificate of Origin. c) Fresh SGS Report. d) Affidavit of Transfer of ownership of product. e) Upon buyer receiving the POP document buyer signs the affidavit of transfer of ownership certificate.</li>
+            <li>Buyer makes 100% payment by MT103/TT wire transfer for the total product and Seller pays commission to all intermediaries Involve in the transaction within 24 hours after confirmation of the buyer's payment then seller issues buyer the Tittle of Ownership.</li>
+            <li>SELLER ISSUES DRAFT CONTRACT FOR BUYER TO REVIEW FOR R&amp;E MONTHLY DELIVERIES.</li>
+            <li>Buyer reviews and approves the contract and issues SBLC/IRDLC irrevocable, non transferable, auto revolving for 12months, Shipment value, documentary letter of credit for the length of contract and for each lift-able as scheduled.</li>
+            <li>Buyer pays after product is confirmed in warehouse by MT103 Wire Transfer on each monthly quantity.</li>
+            <li>The subsequent delivery shall commence according to the terms and conditions of the contract, and mandates/intermediaries receive their commissions according to monthly delivery.</li>
+        </ol>
+    </div>
+</section>
+
+<div class="note-box">
+    <strong>&nbsp; Buyer Eligibility for Port Visit (Q88 Requirement)</strong>
+    <ul>
+        <li><strong>If the buyer wishes to physically inspect the port, they may do so, but they must first submit their Q88. This requirement is in place because the title holder/seller does not invite unverified or non-serious buyers to the port, as some individuals attempt to visit only to collect samples or for fraudulent purposes. Therefore, providing the Q88 is necessary as it confirms the buyer's seriousness, genuine interest, and readiness for purchase. The seller does not wish to waste time and is fully committed to supplying the product only to serious and verified buyers.</strong></li>
+    </ul>
+</div>
+
+<div class="note-box">
+    <strong>&nbsp; Crucial Operational Notes:</strong>
+    <ul>
+        <li>Quantity: 12,000 MT on trial basis.</li>
+        <li>Buyer to submit ICPO along with basic company details (registration/license).</li>
+        <li>Quantity: POF or Bank Statement may be requested for verification purposes. Passport copy may be provided for KYC compliance if required.</li>
+        <li>Payment Terms: SBLC (LC issuance time: 7 to 10 banking days).</li>
+        <li>Quantity: Proof of Funds via MT199/MT799 (bank-to-bank SWIFT) may be requested after signing the SPA.</li>
+        <li>After receipt of ICPO, the refinery will review the offer. If approved, SPA will be issued directly to the buyer via email.</li>
+        <li>Smart Fertilizer Solution shall have the right to coordinate directly with the buyer regarding ICPO details and transaction follow-up.</li>
+    </ul>
+</div>
+
+<section class="contact-section">
+    <div class="contact-container">
+        <h3>Submit ICPO to Smart Fertilizer Solution</h3>
+        <h3 style="margin-bottom: 20px;">Transparent and reliable supply.</h3>
+        <a href="https://wa.me/971561078553" class="btn-whatsapp" target="_blank">&#128172; Connect via WhatsApp</a>
+        <p style="margin-top: 10px; font-size: 1.0rem;">Email Support: <strong>info@smartfertilizer.co</strong></p>
+        <p style="font-size: 1.2rem;">Corporate Call Desk: <strong>+971 56 107 8553</strong></p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo-container">
+        <img src="SMARTLOGO-01.JPG" alt="Smart Fertilizer Solution Logo">
+    </div>
+    <p>&copy; 2026 Smart Fertilizer Solution&trade;. All Rights Reserved.</p>
+    <p>Muscat, Oman &nbsp;&mdash;&nbsp; Karachi, Pakistan.</p>
+</footer>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
+
+<script>
+/* ── PARTICLE BACKGROUND ── */
+(function(){
+    const c = document.getElementById('particle-canvas');
+    const x = c.getContext('2d');
+    function resize(){ c.width = innerWidth; c.height = innerHeight; }
+    resize();
+    addEventListener('resize', resize);
+
+    const pts = Array.from({length:55}, ()=>({
+        x: Math.random()*innerWidth,
+        y: Math.random()*innerHeight,
+        r: Math.random()*1.8+0.4,
+        dx:(Math.random()-.5)*.45,
+        dy:(Math.random()-.5)*.45,
+        a: Math.random()*.45+.15,
+        gold: Math.random()>.5
+    }));
+
+    function draw(){
+        x.clearRect(0,0,c.width,c.height);
+        pts.forEach(p=>{
+            p.x+=p.dx; p.y+=p.dy;
+            if(p.x<0||p.x>c.width)  p.dx*=-1;
+            if(p.y<0||p.y>c.height) p.dy*=-1;
+            x.beginPath();
+            x.arc(p.x,p.y,p.r,0,Math.PI*2);
+            x.fillStyle = p.gold ? `rgba(212,175,55,${p.a})` : `rgba(122,0,0,${p.a})`;
+            x.fill();
+        });
+        for(let i=0;i<pts.length;i++){
+            for(let j=i+1;j<pts.length;j++){
+                const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
+                if(d<110){
+                    x.beginPath();
+                    x.moveTo(pts[i].x,pts[i].y);
+                    x.lineTo(pts[j].x,pts[j].y);
+                    x.strokeStyle=`rgba(212,175,55,${.08*(1-d/110)})`;
+                    x.lineWidth=.5;
+                    x.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+
+/* ── STICKY HEADER + SCROLL-TOP ── */
+const hdr = document.getElementById('site-header');
+const stb = document.getElementById('scrollTopBtn');
+addEventListener('scroll', ()=>{
+    hdr.classList.toggle('scrolled', scrollY>60);
+    stb.classList.toggle('show', scrollY>400);
+});
+
+/* ── INTERSECTION OBSERVER — generic .reveal ── */
+const revObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* ── PRODUCT CARDS — staggered reveal ── */
+const cardObs = new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+        if(e.isIntersecting){
+            setTimeout(()=>e.target.classList.add('card-visible'), i*120);
+            cardObs.unobserve(e.target);
+        }
+    });
+},{threshold:0.1});
+document.querySelectorAll('.product-card').forEach(el=>cardObs.observe(el));
+
+/* ── PROCEDURE BOXES — staggered slide-in ── */
+const boxObs = new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+        if(e.isIntersecting){
+            setTimeout(()=>e.target.classList.add('box-visible'), i*80);
+            boxObs.unobserve(e.target);
+        }
+    });
+},{threshold:0.08});
+document.querySelectorAll('.procedure-box, .note-box').forEach(el=>boxObs.observe(el));
+
+/* ── 3-D CARD TILT on hover ── */
+document.querySelectorAll('.product-card').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+        const r = card.getBoundingClientRect();
+        const xp = (e.clientX-r.left)/r.width -.5;
+        const yp = (e.clientY-r.top)/r.height -.5;
+        card.style.transition = 'box-shadow 0.1s';
+        card.style.transform = `perspective(700px) rotateY(${xp*5}deg) rotateX(${-yp*5}deg) translateY(-2px) scale(1.01)`;
+        card.style.boxShadow = `${-xp*8}px ${-yp*8}px 12px rgba(122,0,0,0.10)`;
+    });
+    card.addEventListener('mouseleave', ()=>{
+        card.style.transition = 'transform 0.55s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s';
+        card.style.transform = '';
+        card.style.boxShadow = '';
+    });
+});
+</script>
 </body>
 </html>
