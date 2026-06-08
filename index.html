@@ -118,14 +118,6 @@
             overflow: hidden;
             z-index: 1;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23d4af37' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 15px;
@@ -151,7 +143,7 @@
         }
 
         .validity-box {
-            border: 1px dashed var(--accent-gold);
+            border: 1.7px dashed var(--accent-gold);
             padding: 15px 30px;
             display: inline-block;
             background: rgba(0,0,0,0.1);
@@ -398,20 +390,6 @@
             overflow: hidden;
             z-index: 1;
         }
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            width: 500px; height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
-            top: -200px; left: 50%;
-            transform: translateX(-50%);
-            animation: pulseBg 4s ease-in-out infinite;
-        }
-        @keyframes pulseBg {
-            0%,100% { transform: translateX(-50%) scale(1); }
-            50%      { transform: translateX(-50%) scale(1.15); }
-        }
         .contact-container { max-width: 600px; margin: 0 auto; position: relative; z-index: 2; }
         .contact-container h2 { font-size: 1.9rem; margin-bottom: 8px; color: var(--accent-gold); }
 
@@ -543,9 +521,12 @@
 
 <div class="floating-socials">
     <a href="https://www.facebook.com/profile.php?id=61567462461604" class="social-icon" title="Facebook" target="_blank"><img src="FB.jpg" alt="FB"></a>
-    <a href="#" class="social-icon" title="Instagram"><img src="IG.jpg" alt="IG"></a>
-    <a href="#" class="social-icon" title="LinkedIn"><img src="IN.jpg" alt="LN"></a>
-    <a href="#" class="social-icon" title="WeChat"><img src="WC.jpg" alt="WC"></a>
+    <a href="https://wa.me/971561078553" class="social-icon" title="WhatsApp" target="_blank">
+    <img src="wa.jpg" alt="WhatsApp">
+    </a>
+    <a href="https://smartfertilizersolution.github.io/Product-Price/" class="social-icon" title="Website" target="_blank">
+    <img src="www.jpg" alt="Website">
+</a>
 </div>
 
 <section class="hero">
