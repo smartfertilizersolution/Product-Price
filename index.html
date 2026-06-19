@@ -1010,5 +1010,241 @@ document.querySelectorAll('.product-card').forEach(card=>{
     });
 });
 </script>
+<!-- CHAT BOT START -->
+
+<style>
+
+#hello-msg{
+    position:fixed;
+    right:20px;
+    bottom:125px;
+    background:#25D366;
+    color:white;
+    padding:8px 15px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+    z-index:9999;
+    animation:helloPop 2s infinite;
+}
+
+
+/* Chatbot Button */
+
+#chatbot-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:88px;
+    height:88px;
+    cursor:pointer;
+    z-index:9999;
+    animation:floatBot 3s ease-in-out infinite;
+}
+
+
+#chatbot-btn img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:transparent;
+}
+
+
+
+/* Chat Box */
+
+#chat-box{
+    display:none;
+    position:fixed;
+    right:20px;
+    bottom:120px;
+    width:320px;
+    background:#ffffff;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+    z-index:9999;
+    overflow:hidden;
+}
+
+
+.chat-header{
+    background:#25D366;
+    color:white;
+    padding:15px;
+    font-weight:bold;
+}
+
+
+.close-chat{
+    float:right;
+    cursor:pointer;
+}
+
+
+.chat-body{
+    padding:15px;
+}
+
+
+.chat-body textarea{
+    width:100%;
+    height:100px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    resize:none;
+    box-sizing:border-box;
+}
+
+
+.send-btn{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:#25D366;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+
+
+/* Bot Up Down Movement */
+
+@keyframes floatBot{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+
+
+/* Hello Animation */
+
+@keyframes helloPop{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+</style>
+
+
+
+<!-- Hello -->
+
+<div id="hello-msg">
+👋 Hello
+</div>
+
+
+
+<!-- Chatbot -->
+
+<div id="chatbot-btn" onclick="openChat()">
+
+<img src="chatbot.png" alt="Chat Bot">
+
+</div>
+
+
+
+
+<!-- Chat Window -->
+
+<div id="chat-box">
+
+<div class="chat-header">
+
+Chat With Us
+
+<span class="close-chat" onclick="closeChat()">✕</span>
+
+</div>
+
+
+<div class="chat-body">
+
+<textarea id="message" placeholder="Type your message here..."></textarea>
+
+
+<button class="send-btn" onclick="sendWhatsApp()">
+Send WhatsApp
+</button>
+
+
+</div>
+
+</div>
+
+
+
+
+<script>
+
+function openChat(){
+
+document.getElementById('chat-box').style.display='block';
+
+}
+
+
+function closeChat(){
+
+document.getElementById('chat-box').style.display='none';
+
+}
+
+
+function sendWhatsApp(){
+
+var msg=document.getElementById('message').value;
+
+
+if(msg==""){
+
+alert("Please type a message");
+
+return;
+
+}
+
+
+var phone="971561078553";
+
+
+var url="https://wa.me/"+phone+"?text="+encodeURIComponent(msg);
+
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+
+<!-- CHAT BOT END -->
 </body>
 </html>
