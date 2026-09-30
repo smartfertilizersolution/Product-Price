@@ -1,1343 +1,1468 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urea, Sulfur, DAP, Diesel EN590, Jet A1, Bitumen, LNG, LPG | Mandate & Trade Facilitation Company | Smart Fertilizer Solution</title>
-    <style>
-        :root {
-            --primary-maroon: #7a0000;
-            --light-maroon: #990000;
-            --dark-maroon: #5c0000;
-            --accent-gold: #d4af37;
-            --dark-gold: #aa841c;
-            --text-dark: #1e293b;
-            --text-light: #f8fafc;
-            --bg-light: #fdfbf7;
-            --card-bg: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* ── PARTICLES ── */
-        #particle-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        /* ── TOP BAR ── */
-        .top-bar {
-            background: linear-gradient(90deg, var(--dark-maroon), var(--primary-maroon), var(--dark-maroon));
-            background-size: 300% 100%;
-            animation: barShimmer 5s linear infinite;
-            color: var(--text-light);
-            text-align: center;
-            padding: 10px 20px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            border-bottom: 3px solid var(--accent-gold);
-            text-transform: uppercase;
-            position: relative;
-            z-index: 100;
-        }
-        @keyframes barShimmer {
-            0%   { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* ── HEADER ── */
-        header {
-            background-color: rgba(255,255,255,0.97);
-            padding: 10px 5%;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s, box-shadow 0.3s, padding 0.3s;
-        }
-        header.scrolled {
-            border-bottom-color: var(--accent-gold);
-            box-shadow: 0 6px 25px rgba(122,0,0,0.15);
-            padding: 8px 5%;
-        }
-
-.logo-area{
-    display:flex;
-    align-items:center;
-}
-
-.logo-area .site-logo{
-    width:240px;
-    max-width:100%;
-    height:auto;
-    display:block;
-}
-
-@media (max-width:768px){
-    .logo-area .site-logo{
-        width:160px;
-    }
-}
-        .contact-top { text-align: right; font-size: 0.9rem; }
-        .contact-top a {
-            color: var(--primary-maroon);
-            text-decoration: none;
-            font-weight: bold;
-            margin-left: 15px;
-            transition: color 0.2s;
-        }
-        .contact-top a:hover { color: var(--accent-gold); }
-
-.hero {
-    background: linear-gradient(
-        90deg,
-        #5c0000,
-        #7a0000,
-        #990000,
-        #7a0000,
-        #5c0000
-    );
-    background-size: 300% 100%;
-    animation: heroShimmer 5s linear infinite;
-
-    padding: 50px 5% 40px;
-    color: var(--text-light);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-@keyframes heroShimmer {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            color: var(--accent-gold);
-            animation: fadeDown 1.2s ease both;
-        }
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-25px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero .tagline {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: var(--text-light);
-            animation: fadeUp 1.2s 0.5s ease both;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .validity-box {
-            border: 1.7px dashed var(--accent-gold);
-            padding: 15px 30px;
-            display: inline-block;
-            background: rgba(0,0,0,0.1);
-            font-size: 0.85rem;
-            border-radius: 6px;
-            animation: fadeUp 0.8s 0.35s ease both;
-        }
-
-        /* ── HERO IMAGE ── */
-        .hero-image-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-bottom: 5px solid var(--accent-gold);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-            position: relative;
-            z-index: 1;
-        }
-        .hero-image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s ease;
-        }
-        .hero-image-container:hover img { transform: scale(1.02); }
-
-        /* ── FLOATING SOCIALS ── */
-        .floating-socials {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
-        }
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-            border: 2px solid var(--accent-gold);
-        }
-        .social-icon:hover {
-            transform: scale(1.2) translateX(-5px);
-            box-shadow: 0 8px 20px rgba(122,0,0,0.35);
-        }
-        .social-icon img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* ── INTRO ── */
-        .intro-section {
-            padding: 30px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .intro-section h3 {
-            color: var(--primary-maroon);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .intro-section p {
-            font-size: 1.1rem;
-            color: #475569;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        /* ── SECTION TITLE ── */
-        .section-title {
-            text-align: center;
-            padding: 20px 0 10px;
-            font-size: 2rem;
-            color: var(--primary-maroon);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-gold);
-            display: block;
-            margin: 10px auto 0;
-        }
-
-        /* ── PRODUCT GRID & CARDS ── */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 25px 5%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            /* 3D tilt handled by JS; base transition for mouse-leave */
-            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
-            will-change: transform;
-            /* scroll reveal start state */
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        .product-card.card-visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
-        }
-
-        .product-header {
-            background-color: var(--primary-maroon);
-            color: var(--text-light);
-            padding: 25px;
-            font-size: 1.25rem;
-            font-weight: bold;
-            border-bottom: 4px solid var(--accent-gold);
-        }
-        .product-body { padding: 25px; flex-grow: 1; }
-        .product-meta { margin-bottom: 15px; font-size: 0.95rem; }
-        .product-meta .label { font-weight: bold; color: #64748b; }
-
-        .product-price {
-            font-size: 1.5rem;
-            color: #b45309;
-            font-weight: 800;
-            margin: 15px 0;
-            background: #fffbeb;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid #fef3c7;
-        }
-
-        .spec-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85rem; }
-        .spec-table th, .spec-table td { border: 1px solid #e2e8f0; padding: 6px 10px; text-align: left; }
-        .spec-table th { background-color: #f1f5f9; color: var(--text-dark); }
-        .spec-table tr { transition: background 0.2s; }
-        .spec-table tr:hover td { background: #fef9e7; }
-
-        /* ── PROCEDURES ── */
-        .procedures-section {
-            background-color: #f1f5f9;
-            padding: 25px 5%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .procedure-box {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary-maroon);
-            position: relative;
-            overflow: hidden;
-            /* scroll reveal */
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
-        .procedure-box::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold), transparent);
-        }
-        .procedure-box.box-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .procedure-box h4 {
-            color: var(--primary-maroon);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .procedure-list { list-style-position: inside; padding-left: 5px; }
-        .procedure-list li {
-            margin-bottom: 12px;
-            color: #334155;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 8px;
-            transition: background 0.2s, padding-left 0.2s;
-            border-radius: 4px;
-            padding-left: 6px;
-        }
-        .procedure-list li:hover {
-            background: #fef9e7;
-            padding-left: 12px;
-        }
-        .procedure-list li:last-child { border-bottom: none; }
-
-        /* ── NOTE BOX ── */
-        .note-box {
-            background-color: #fffaf0;
-            border: 1px solid #feebc8;
-            border-left: 4px solid #dd6b20;
-            padding: 25px;
-            border-radius: 6px;
-            margin: 20px 5%;
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .note-box.box-visible { opacity: 1; transform: translateY(0); }
-        .note-box ul { padding-left: 20px; margin-top: 10px; }
-        .note-box li { margin-bottom: 6px; }
-
-        /* ── CONTACT ── */
-        .contact-section {
-            background: linear-gradient(135deg, var(--dark-maroon), var(--primary-maroon) 50%, var(--dark-maroon));
-            color: var(--text-light);
-            padding: 40px 5%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .contact-container { max-width: 600px; margin: 0 auto; position: relative; z-index: 2; }
-        .contact-container h2 { font-size: 1.9rem; margin-bottom: 8px; color: var(--accent-gold); }
-
-        .btn-whatsapp {
-            display: inline-block;
-            background-color: #25d366;
-            color: white;
-            padding: 14px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 30px;
-            text-decoration: none;
-            margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            animation: pulseGreen 2.5s ease-in-out infinite;
-        }
-        @keyframes pulseGreen {
-            0%,100% { box-shadow: 0 4px 10px rgba(37,211,102,0.35); }
-            50%      { box-shadow: 0 4px 28px rgba(37,211,102,0.7); }
-        }
-        .btn-whatsapp:hover {
-            background-color: #20ba5a;
-            transform: translateY(-4px) scale(1.04);
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background-color: var(--dark-maroon);
-            color: #cbd5e1;
-            text-align: center;
-            padding: 80px 20px 40px;
-            position: relative;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            z-index: 1;
-        }
-        .footer-logo-container {
-            position: absolute;
-            left: 130px;
-            bottom: 20px;
-        }
-        .footer-logo-container img {
-            height: 120px;
-            width: auto;
-            background: white;
-            padding: 8px;
-            border-radius: 6px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-        .footer-logo-container img:hover { transform: scale(1.06); }
-        footer p { margin-bottom: 10px; }
-
-        /* ── SCROLL-TO-TOP ── */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            left: 20px;
-            width: 46px;
-            height: 46px;
-            background: linear-gradient(135deg, #000080, #00004d);
-            color: var(--accent-gold);
-            border: 2px solid var(--accent-gold);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s, transform 0.3s;
-            box-shadow: 0 4px 12px rgba(122,0,0,0.4);
-        }
-        .scroll-top.show { opacity: 1; pointer-events: auto; }
-        .scroll-top:hover { transform: translateY(-4px); }
-
-        /* ── LOADING PORTS / INLINE TITLES ── */
-        .info-title {
-            text-align: center;
-            padding: 10px 5%;
-            font-size: 1.15rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ── MEDIA ── */
-        @media (max-width: 992px) {
-            .footer-logo-container { position: static; display: inline-block; margin-bottom: 20px; }
-            footer { padding: 40px 20px; }
-        }
-        @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; gap: 10px; }
-            .contact-top { text-align: center; }
-            .hero h2 { font-size: 1.8rem; }
-            .floating-socials { position: static; flex-direction: row; justify-content: center; margin-bottom: 20px; transform: none; }
-        }
-
-        /* ── GENERIC REVEAL ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            position: relative;
-            z-index: 1;
-        }
-        .reveal.vis { opacity: 1; transform: translateY(0); }
-    </style>
-</head>
-<body>
-<!-- START LOADER -->
-
-<style>
-#loader{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#ffffff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:999999;
-}
-
-#loader img{
-    width:250px;
-    max-width:80%;
-}
-
-.loading{
-    margin-top:20px;
-}
-
-.loading span{
-    width:15px;
-    height:15px;
-    border-radius:50%;
-    display:inline-block;
-    margin:0 5px;
-    animation:blink 1.2s infinite;
-}
-
-.loading span:nth-child(1){
-    background:#ff0000;
-    animation-delay:0s;
-}
-
-.loading span:nth-child(2){
-    background:#00cc00;
-    animation-delay:.2s;
-}
-
-.loading span:nth-child(3){
-    background:#0066ff;
-    animation-delay:.4s;
-}
-
-@keyframes blink{
-    0%,80%,100%{
-        opacity:.3;
-        transform:scale(.8);
-    }
-    40%{
-        opacity:1;
-        transform:scale(1.3);
-    }
-}
-</style>
-
-<div id="loader">
-    <img src="SMARTLOGO-03.JPG" alt="SMART LOGO">
-
-    <div class="loading">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-
-<script>
-window.addEventListener("load", function(){
-
-    setTimeout(function(){
-
-        document.getElementById("loader").style.opacity="0";
-        document.getElementById("loader").style.transition="0.5s";
-
-        setTimeout(function(){
-            document.getElementById("loader").style.display="none";
-        },500);
-
-    },2500);
-
-});
-</script>
-
-<!-- END LOADER -->
-
-<canvas id="particle-canvas"></canvas>
-
-<div class="top-bar">
-    Authorised Mandate To The Refinery &bull; Distributor Agent No. AB/8912052/25/KZ
-</div>
-
-<header id="site-header">
-<div class="logo-area">
-    <img src="SMARTLOGO-02.JPG" alt="Smart Fertilizer Solution Logo" class="site-logo">
-</div>
-    <div class="contact-top">
-        <a href="mailto:info@smartfertilizer.co">📩 info@smartfertilizer.co</a>
-        <a href="tel:+971561078553">📞 +971 56 107 8553</a>
-    </div>
-</header>
-
-<div class="floating-socials">
-    <a href="https://wa.me/971561078553" class="social-icon" title="WhatsApp" target="_blank">
-    <img src="wa.jpg" alt="WhatsApp">
-    </a>
-    <a href="mailto:info@smartfertilizer.co" class="social-icon" title="Email">
-    <img src="email.jpg" alt="Email">
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61567462461604" class="social-icon" title="Facebook" target="_blank"><img src="FB.jpg" alt="FB"></a>
-</div>
-
-<section class="hero">
-    <h2>Global Trading Facilitation</h2>
-    <h3 class="tagline">Urea &bull; Sulfur &bull; DAP &bull; ICUMA-45 Sugar &bull; Diesel EN590 &bull; Jet A1 &bull; ESPO Crude Oil &bull; LPG &bull; LNG &bull; Aviation Kerosene (JP54) &bull; Bitumen &bull; Automotive Urea</h3>
-    <div class="validity-box">
-        <span style="color: #fca5a5; font-size: 0.8rem; font-weight: bold; display: block; margin-top: 5px;">REFINERY CAN CHANGE THE PRICE AT ANY TIME</span>
-    </div>
-</section>
-
-<div class="hero-image-container">
-    <img src="Product_Portfolio_Display1.jpg" alt="Product Portfolio Display">
-</div>
-
-<section class="intro-section reveal">
-    <h3>Corporate Offer</h3>
-    <h2 style="color: var(--dark-gold);">Introduction</h2>
-    <p>Smart Fertilizer Solution connects buyers directly with refineries to ensure a transparent and reliable supply process. We facilitate the supply of Urea, Sulfur, DAP, ICUMA-45 Sugar, Diesel EN590, Jet A1, ESPO Crude Oil, LPG, LNG, Aviation Kerosene (JP54), Bitumen, Automotive Urea.</p>
-    <p>As an Authorized Mandate, we receive the ICPO, verify the company and banking details, and submit them to the refinery for approval. Once approved, the SPA is issued directly to the buyer, and all payments are made directly to the refinery.</p>
-    <p>Smart Fertilizer Solution acts solely as a Mandate and Trade Facilitation Company and does not collect payments from buyers.</p>
-</section>
-
-<h2 class="section-title reveal">PRODUCT &amp; PRICE LIST</h2>
-<section class="product-grid">
-
-    <div class="product-card">
-        <div class="product-header">UREA N46% Granular / Prilled</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia / Azerbaijan</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 300,000 MT per Month</div>
-            <div class="product-price">CIF $500 per MT</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
-            <table class="spec-table">
-                <tr><th>Property</th><th>Specification</th></tr>
-                <tr><td>Urea Assay (wt %)</td><td>98.0 min</td></tr>
-                <tr><td>Mass portion of nitrogen (N)</td><td>46.2% min</td></tr>
-                <tr><td>Mass portion of Biuret</td><td>0.71% max</td></tr>
-                <tr><td>Apparent Density</td><td>770-809 Kg/m³</td></tr>
-                <tr><td>Free Ammonia</td><td>160 PXT PPM max</td></tr>
-                <tr><td>Granulation</td><td>0.85-3.35 mm (90% min)</td></tr>
-                <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">Sulfur Granular / Lumps / Powder</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia / Azerbaijan</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 300,000 MT per Month</div>
-            <div class="product-price">CIF $750 per MT</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
-            <table class="spec-table">
-                <tr><th>Property</th><th>Typical Specification</th></tr>
-                <tr><td>Form</td><td>Granular / Lumps / Powder</td></tr>
-                <tr><td>Color</td><td>Bright Yellow</td></tr>
-                <tr><td>Purity (as Sulfur)</td><td>99.8% min</td></tr>
-                <tr><td>Ash Content</td><td>0.05% max</td></tr>
-                <tr><td>Moisture Content</td><td>0.5% max</td></tr>
-                <tr><td>Size Distribution</td><td>1-6 mm (90% min)</td></tr>
-                <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">DAP 18-46 (Brown) Fertilizer</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 500,000 MT per Month</div>
-            <div class="product-price">CIF $600 per MT</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-            <h5 style="margin-top:15px; color: var(--primary-maroon);">Product Specifications:</h5>
-            <table class="spec-table">
-                <tr><th>Property</th><th>Specification</th></tr>
-                <tr><td>Nitrogen (N)</td><td>18% &plusmn;0.2</td></tr>
-                <tr><td>Phosphorus (P&sub2;O&sub5;)</td><td>46% &plusmn;0.5</td></tr>
-                <tr><td>Moisture</td><td>Max 0.5% - 1%</td></tr>
-                <tr><td>Physical Form</td><td>Uniform free-flowing brown granules</td></tr>
-                <tr><td>pH</td><td>7 - 7.5</td></tr>
-                <tr><td>Solubility</td><td>Completely soluble in water</td></tr>
-                <tr><td>Packaging</td><td>50 kg / 1 MT Bags / Bulk</td></tr>
-            </table>
-        </div>
-    </div>
-</section>
-
-<section class="product-grid">
-    <div class="product-card">
-        <div class="product-header">ICUMA-45 Sugar (Refined &amp; Processed in Oman)</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> ICUMSA 45 (Brazil Raw Sugar)</div>
-            <div class="product-meta"><span class="label">FOB</span> Sohar Port, Oman</div>
-            <div class="product-price">$550 / MT (FOB)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($2 Commission Included.)</p>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">Diesel EN590 - 10/50PPM</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
-            <div class="product-price">$650 / MT (FOB)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">JET A1 Aviation Fuel</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 1,580,000 BBL per Month</div>
-            <div class="product-price">$120 / Barrel (FOB)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($2 / Barrel Commission Included.)</p>
-        </div>
-    </div>
-</section>
-
-<section class="product-grid">
-    <div class="product-card">
-        <div class="product-header">ESPO Premium Crude Oil</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 5,000,000 MT per Month</div>
-            <div class="product-price">$110 / Barrel (FOB)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($5 / Barrel Commission Included.)</p>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">Liquid Petroleum Gas (LPG)</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
-            <div class="product-price">$650 / MT (CIF)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">Liquefied Natural Gas (LNG)</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 2,000,000 MT per Month</div>
-            <div class="product-price">$700 / MT (CIF)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-        </div>
-    </div>
-</section>
-
-<section class="product-grid">
-    <div class="product-card">
-        <div class="product-header">Aviation Kerosene Colonial Grade 54 Jet Fuel (JP54)</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 2,000,000 MT per Month</div>
-            <div class="product-price">$120 / Barrel (FOB)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($5 / Barrel Commission Included.)</p>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">Bitumen Grade 40/50, 60/70, 80/100</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 500,000 MT per Month</div>
-            <div class="product-price">$500 / MT (CIF)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-header">Automotive Urea</div>
-        <div class="product-body">
-            <div class="product-meta"><span class="label">Country of Origin:</span> Kazakhstan / Russia</div>
-            <div class="product-meta"><span class="label">Max. Qty:</span> 200,000 MT per Month</div>
-            <div class="product-price">$550 / MT (CIF)</div>
-            <p style="font-size: 1.0rem; color:#64748b; margin-bottom:10px;">($10 Commission Included.)</p>
-        </div>
-    </div>
-</section>
-
-<h3 class="section-title reveal" style="margin-bottom: 10px; text-transform: none !important; font-size: 22px;">
-    <span style="color: var(--dark-gold);">Loading Port:</span>
-    <span style="color: #000;">Aktau, Batumi, Poti, Rotterdam, Jurong, Houston, Vladivostok, Novorossiysk, Kozmino, Ust-Luga</span>
-</h3>
-
-<h3 class="section-title reveal" style="margin-bottom: 10px; text-transform: none !important; font-size: 22px;">
-    <span style="color: #000080;">Vopak to Vopak transfer available (Jurong, Rotterdam & Houston Port)</span>
-</h3>
-
-<h3 class="section-title reveal" style="margin-bottom: 10px; text-transform: none !important; font-size: 22px;">
-    <span style="color: #990000;">For FOB deal, Buyer will submit the ICPO with the vessel details or the Charter Agreement. Qty. 12,500 – 25,000 MT.</span>
-</h3> 
-
-<section class="procedures-section">
-    <h2 class="section-title" style="margin-bottom: 20px;">Refinery Working Procedures</h2>
-
-    <div class="procedure-box">
-        <h4>Transaction Procedures (FOB Fujairah, Rotterdam, Houston, Jurong)</h4>
-        <ol class="procedure-list">
-            <li>The Buyer Issue an ICPO. Containing the seller's work procedures and Banking Details along with TSA (TANK STORAGE AGREEMENT), Buyer Certificate of incorporation, Company Profile (CP) and International Passport Copy of the CEO.</li>
-            <li>Seller issues ICC Warning Letter and Commercial Invoice (CI) of products in tank at port, buyer signs and returns the documents with acceptance and commitment letter stating to adhere to seller procedure.</li>
-            <li>The seller issues a copy of the SGS Report strictly JUST to the buyer's Tank farm Company only to verify the SGS Report.</li>
-            <li>After confirmation of successful verification of SGS Report only by Buyer's Tank Farm Company. The Buyer pays his Tank Company for 6 Days (3 days seller 3 days buyer) TSR, at first seller pay 3 days after confirming by tank farm, buyer will pay 3 days then sends 6 days TSR to the Seller. All Parties must sign NCNDA and IMFPA for endorsements.</li>
-            <li>The seller issues the following POP documents to the buyer: (a) SGS report for quality and quantity not older than 48 hours, (b) Product Certificate of Origin, (c) Product injection report, (d) Tank storage receipt with full GPS coordinates, (e) Unconditional dip test authorization letter, [f] Authorization to sell and collect, (h) Q&amp;A.</li>
-            <li>After verification of the documents, the injection will be commenced and after injection the buyer makes payment for the total value of the product injected into the tank via MT103-TT.</li>
-            <li>After receiving confirmation of Buyer Payment, the seller immediately transfers the title ownership to the buyer.</li>
-            <li>Seller sends payment of all intermediaries involved in the transaction 24 hours after receiving confirmation of Buyer Payment as per signed &amp; sealed NCNDA/IMFPA which is notarized by Public Notary in Kazakhstan and then monthly remittance is continued as per terms and terms of the contract of sale and purchase agreement between the buyer and seller.</li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>Transaction Procedure Tank to Tank No: 2</h4>
-        <ol class="procedure-list">
-            <li>The Buyer Issue an ICPO. Containing the seller's work procedures and Banking Details along with TSA (TANK STORAGE AGREEMENT), Buyer Certificate of incorporation, Company Profile (CP) and International Passport Copy of the CEO.</li>
-            <li>Seller issue to Buyer Commercial Invoice + ICC, Buyer sign &amp; returns the CI to Seller.</li>
-            <li>Seller rent the Buyer's Tank for 3 days for injection, Buyer also pays both nominated Tank Storage Facility for 2 days After buyer's tank farm company has received payment from the Seller company and issues 5 days TSR. Seller provides Buyer the below POP Documents: a. Injection Report, b. Tank Storage Receipt, c. Tank Farm Bar-code information, d. letter Of Commitment to Supply, e. Registration Certificate, f. Fresh SGS Q&amp;Q Report 48 Hours, g. Unconditional DTA.</li>
-            <li>Buyer conduct Dip-Test, via SGS and after Dip-Test, Buyer makes payment as per MT103 wire transfer/TT according to the commercial Invoice, Buyer lifts the product.</li>
-            <li>Seller transfers the title of ownership as per Buyer's instruction.</li>
-            <li>Seller pays all intermediaries of the Seller Side. Buyer pays all intermediaries of the Buyer Side involved in the transaction.</li>
-            <li>Subsequently monthly shipment continues as per terms and conditions of the sales ad purchase Agreement contract between Buyer and Seller to be issued and accepted.</li>
-            <li>Seller and Buyer will respect NCNDA-IMFPA as agreed also on the contract.</li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>Approved Table Talk Meeting Procedure FOB ASWP (Non-Negotiable)</h4>
-        <ol class="procedure-list">
-            <li>Buyer issue ICPO and TSA for seller verification.</li>
-            <li>Seller issue Commercial Invoice C.I buyer sign and return for legalization.</li>
-            <li>Buyer open communication with seller and buyer tank farm, for scheduling of table talk meeting in buyer tank farm office, in the table talk meeting seller provide below document for buyer verification: a. FRESH SGS, b. INJECTION REPORT, c. PRODUCT PASSPORT, d. TSR, e. UDTA, f. ATV.</li>
-            <li>After the meeting and verification of the POP, buyer move to sellers tank for physical verification etc., Upon successful verification seller and buyer sign TANK TO TANK INJECTION AGREEMENT.</li>
-            <li>Seller transfers all title document and shipping document to buyer name and hand them over to buyer, upon confirmation of the documents buyer immediately pay for full product by MT103 or TT.</li>
-            <li>Upon receive of buyer payment seller Injection follows immediately.</li>
-            <li>Seller pays all intermediaries involve.</li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>Refinery Procedure TTV (Tank to Vessel)</h4>
-        <ol class="procedure-list">
-            <li>Buyer issues ICPO must be with buyer company letterhead containing the seller's working procedure with banking details scanned copy of buyer's Passport data page Buyer's for seller's validation. Seller issues a commercial invoice of the product in tanks at the port, and the buyer signs and returns a Commercial Invoice to the seller.</li>
-            <li>Upon return of the endorsed CI, the Seller release to the buyer the following Partial PPOP documents: a. Commitment Letter to Supply, b. Certificate of Origin, c. Statement of Product Availability, d. Authorization to sell/collect, e. Export license.</li>
-            <li>Buyer leased the seller tank for one day tank extension payment to enable tank clearance and for the buyer to gain a port legal access permit to execute a dip test for quantity and quality inspection and fresh inspection/report by SGS in seller Tank.</li>
-            <li>Upon confirmation of the buyer securing tank clearance and port legal access permit to the product, the seller issues DTA for the buyer to proceed with the dip test and the buyer and his SGS Inspection team conduct a dip test on the product in the seller tank.</li>
-            <li>Upon the satisfactory result of the dip test, the Seller's storage Company issues the buyer, the Notice of Readiness (NOR) to inject the product.</li>
-            <li>The buyer provides Q88 and ATI from his logistics/Shipping Company and makes the Vessel available for the injection process to commence as scheduled.</li>
-            <li>Upon completion of the Injection, the Seller releases to the buyer the below POP documents: a. Product SGS Report, b. Pipeline Injection Report, c. Authority to Sell and Collect (ATSC), d. Product passport (analysis test report), e. NCNDA/IMFPA to all intermediaries involved in the Transaction and to the buyer, f. Endorsed NCNDA/IMFPA.</li>
-            <li>Upon confirmation of the above pop document by the buyers and the Endorsement of NCNDA/IMFPA the Buyer immediately pays for the total cost of the product value injected into the Ship/vessel through MT103 TT wire transfer. The seller pays all intermediaries involved in the transaction upon receipt of the payment within 24hrs and Transfers the Title of Ownership certificate of the product to the buyer. Buyer and seller agree to roll over to a one-year contract to continue the transaction, with monthly deliveries x 12 months. <br><span style="color: #dd6b20; font-size: 0.85rem; font-weight: bold;">Note: The amount paid for the day tank extension to secure tank clearance and port legal access permit will be deducted when the buyer is paying for the full product.</span></li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>Transaction Procedures FOB - Tank to Vessel (TTV) No. 2</h4>
-        <ol class="procedure-list">
-            <li>Buyer issues ICPO containing the seller's procedure with banking details and scanned copy of buyer's passport along with Charter Party Agreement (CPA), for Seller's validation.</li>
-            <li>Seller issues Commercial Invoice (CI) for the available products in Tank at the Port, for Buyer's review and endorsement and return along with Buyer's Charter Party Agreement (CPA).</li>
-            <li>Seller issues to buyer Tank-to-Vessel Injection Agreement (TTVIA) to be endorsed by both Seller and Buyer's Logistic Company.</li>
-            <li>Upon returned of the endorsed TTVIA, Seller release to Buyer the following PPOP documents: a. Copy of Tank Storage Receipt (TSR), b. Copy of Commitment Letter to Supply, c. Copy of Export License, d. Copy of Authorization to Verify (ATV) (call or email).</li>
-            <li>Buyer contacts the Seller's Storage Company to verify the availability of the product and to obtain access to enable Buyer and his team conduct dip test on the product in the Tank.</li>
-            <li>Seller upon confirmation of Buyer securing legal access to the product, issues Dip Test Authorization (DTA) for Buyer to proceed for the dip test.</li>
-            <li>Upon satisfactory result of the dip test on the product by the Buyer and his team, Seller's storage Company issue to Buyer the Notice of Readiness (NOR) to inject the product.</li>
-            <li>Buyer issues Q88 and makes available the Vessel for the injection process to commence as schedule.</li>
-            <li>Upon completion of the Injection, Seller releases to buyer the below POP documents: a. Copy of Product SGS Report, b. Copy of Injection Report, c. Copy of Authority to Sell and Collect (ATSC), d. Copy of Product passport (analysis test report), e. Copy of Certificate of Origin, f. Copy of NCNDA/IMFPA.</li>
-            <li>Buyer immediately pays for the total cost of the product value injected into the vessel through MT103 TT wire transfer.</li>
-            <li>Seller Upon confirmation of the payment, pays all intermediaries involve in the transaction.</li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>CIF Refinery Transacting Procedure</h4>
-        <ol class="procedure-list">
-            <li>Buyer issues CP, ICPO inserting seller's terms and procedures.</li>
-            <li>Seller issues draft contract/SPA which is open for amendments.</li>
-            <li>Buyer returns the signed draft contract with NCNDA/IMFPA and a letter of guarantee to perform.</li>
-            <li>Seller submits the signed SPA for registration and legalization with the appropriate authorities.</li>
-            <li>Seller sends the below listed partial pop documents to buyer via mail: a. Statement of availability of product, b. Commitment to supply the product, c. Certificate of origin, d. Product Passport, e. Export license.</li>
-            <li>Buyer within 5-7 banking days issues SBLC swift MT760 according to Seller's fiduciary bank verbiage to seller nominated fiduciary offshore bank account for first month shipment, and whereby buyer fail to issue payment instrument within 5-7 banking days, buyer will make cash deposit of $180,000 by TT wire transfer for allocation and security guarantee to enable seller charter vessel and commence shipment, and this payment shall be deducted from the total cost of product after inspection at discharge port.</li>
-            <li>Seller bank issues the full set of proof of product (pop) and shipping document with 2% pb (performance bond) to buyer's bank. QQ Certificate &amp; Product passport docs, all will be issued on time.</li>
-            <li>Shipment commences immediately as scheduled in the contract.</li>
-            <li>Buyer pays for the total product value via TT/MT103 to the seller's bank after successful SGS/CIQ inspection at discharge port and title of product ownership transferred to buyer.</li>
-            <li>Seller pays all intermediaries involved in transaction as per signed NCNDA/IMFPA.</li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>CIF Working Procedure No: 2</h4>
-        <ol class="procedure-list">
-            <li>Buyer issues ICPO (Irrevocable Corporate Purchase Order) after acceptance of Seller's terms, Conditions and Procedure.</li>
-            <li>Seller issues draft Contract, buyer countersigned and returns back, and seller present CPA (Charter Party Agreement) from shipping company for buyer signing.</li>
-            <li>Buyer signs the Charter Party Agreement with the shipping company and sends copy of the signed Charter Party Agreement to seller.</li>
-            <li>Seller issues Partial POP documents to buyer to verify the availability of the product: i. Product Passport dip-test certificate, ii. Refinery commitment to supply, iii. Refinery statement of product availability, iv. Company registration certificate.</li>
-            <li>Within 72 hours of receipt of above POP documents, Buyer and Seller pay the shipping cost 50%/50% each to the shipping company to transport the product to Buyer destination port, which serves as commitment assurance that Buyer will not default in the transaction. <span style="color: #dd6b20; font-size: 0.85rem; font-weight: bold;">The payment shall be deducted from the total cost of product.</span></li>
-            <li>Delivery commence as schedule and Seller issues the full POP documents to Buyer;</li>
-            <li>Upon arrival of product at Buyer's destination port, Buyer conduct Dip-Test inspection of the product by SGS / CIQ inspection and makes payment for the product by MT103 after Q&amp;Q inspection.</li>
-            <li>Seller makes payments to all involved intermediaries / mandates in accordance with the signed NCNDA/IMFPA.</li>
-            <li>Buyer issue nontransferable MT700 IRDLC (Irrevocable Revolving Documentary Letter of Credit) to Seller for the subsequent 12-month delivery.</li>
-        </ol>
-    </div>
-
-    <div class="procedure-box">
-        <h4>W2W Procedure (Urea, Sulfur, DAP)</h4>
-        <ol class="procedure-list">
-            <li>Buyer issues ICPO with the seller terms and conditions and their warehouse agreement.</li>
-            <li>Upon seller satisfaction of the ICPO from the buyer, the seller issues commercial invoice.</li>
-            <li>Buyer studies and signs the commercial invoice within 3 working days and returns back to the seller.</li>
-            <li>Upon the seller receives the signed copy of the commercial invoice from the buyer, seller issues to the buyer the below PPOP document: a) Statement of availability. b) Commitment Letter to supply.</li>
-            <li>Upon buyer receiving the PPOP document seller requests the buyer to provide a warehouse receipt.</li>
-            <li>Upon receiving the warehouse receipt seller shall issue SGS to conduct test.</li>
-            <li>Upon SGS conducting the test, loading shall commence into warehouse.</li>
-            <li>Upon the completion of the loading seller shall issue to the buyer the following POP Document: a) Authorization to sell and collect. b) Certificate of Origin. c) Fresh SGS Report. d) Affidavit of Transfer of ownership of product. e) Upon buyer receiving the POP document buyer signs the affidavit of transfer of ownership certificate.</li>
-            <li>Buyer makes 100% payment by MT103/TT wire transfer for the total product and Seller pays commission to all intermediaries Involve in the transaction within 24 hours after confirmation of the buyer's payment then seller issues buyer the Tittle of Ownership.</li>
-            <li>SELLER ISSUES DRAFT CONTRACT FOR BUYER TO REVIEW FOR R&amp;E MONTHLY DELIVERIES.</li>
-            <li>Buyer reviews and approves the contract and issues SBLC/IRDLC irrevocable, non transferable, auto revolving for 12months, Shipment value, documentary letter of credit for the length of contract and for each lift-able as scheduled.</li>
-            <li>Buyer pays after product is confirmed in warehouse by MT103 Wire Transfer on each monthly quantity.</li>
-            <li>The subsequent delivery shall commence according to the terms and conditions of the contract, and mandates/intermediaries receive their commissions according to monthly delivery.</li>
-        </ol>
-    </div>
-</section>
-
-<div class="note-box">
-    <strong>&nbsp; Buyer Eligibility for Port Visit (Q88 Requirement)</strong>
-    <ul>
-        <li><strong>If the buyer wishes to physically inspect the port, they may do so, but they must first submit their Q88. This requirement is in place because the title holder/seller does not invite unverified or non-serious buyers to the port, as some individuals attempt to visit only to collect samples or for fraudulent purposes. Therefore, providing the Q88 is necessary as it confirms the buyer's seriousness, genuine interest, and readiness for purchase. The seller does not wish to waste time and is fully committed to supplying the product only to serious and verified buyers.</strong></li>
-    </ul>
-</div>
-
-<div class="note-box">
-    <strong>&nbsp; Crucial Operational Notes:</strong>
-    <ul>
-        <li>Quantity: 12,000 MT on trial basis.</li>
-        <li>Buyer to submit ICPO along with basic company details (registration/license).</li>
-        <li>Quantity: POF or Bank Statement may be requested for verification purposes. Passport copy may be provided for KYC compliance if required.</li>
-        <li>Payment Terms: SBLC (LC issuance time: 7 to 10 banking days).</li>
-        <li>Quantity: Proof of Funds via MT199/MT799 (bank-to-bank SWIFT) may be requested after signing the SPA.</li>
-        <li>After receipt of ICPO, the refinery will review the offer. If approved, SPA will be issued directly to the buyer via email.</li>
-        <li>Smart Fertilizer Solution shall have the right to coordinate directly with the buyer regarding ICPO details and transaction follow-up.</li>
-    </ul>
-</div>
-
-<section class="contact-section">
-    <div class="contact-container">
-        <h3>Submit ICPO to Smart Fertilizer Solution</h3>
-        <h3 style="margin-bottom: 20px;">Transparent and reliable supply.</h3>
-        <a href="https://wa.me/971561078553" class="btn-whatsapp" target="_blank">&#128172; Connect via WhatsApp</a>
-        <p style="margin-top: 10px; font-size: 1.0rem;">Email Support: <strong>info@smartfertilizer.co</strong></p>
-        <p style="font-size: 1.2rem;">Corporate Call Desk: <strong>+971 56 107 8553</strong></p>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-logo-container">
-        <img src="SMARTLOGO-01.JPG" alt="Smart Fertilizer Solution Logo">
-    </div>
-    <p>&copy; 2026 Smart Fertilizer Solution&trade;. All Rights Reserved.</p>
-    <p>Dubai &nbsp;&bull;&nbsp; Muscat &nbsp;&bull;&nbsp; Dammam &nbsp;&bull;&nbsp; Karachi</p>
-</footer>
-
-<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
-
-<script>
-/* ── PARTICLE BACKGROUND ── */
-(function(){
-    const c = document.getElementById('particle-canvas');
-    const x = c.getContext('2d');
-    function resize(){ c.width = innerWidth; c.height = innerHeight; }
-    resize();
-    addEventListener('resize', resize);
-
-    const pts = Array.from({length:55}, ()=>({
-        x: Math.random()*innerWidth,
-        y: Math.random()*innerHeight,
-        r: Math.random()*1.8+0.4,
-        dx:(Math.random()-.5)*.45,
-        dy:(Math.random()-.5)*.45,
-        a: Math.random()*.45+.15,
-        gold: Math.random()>.5
-    }));
-
-    function draw(){
-        x.clearRect(0,0,c.width,c.height);
-        pts.forEach(p=>{
-            p.x+=p.dx; p.y+=p.dy;
-            if(p.x<0||p.x>c.width)  p.dx*=-1;
-            if(p.y<0||p.y>c.height) p.dy*=-1;
-            x.beginPath();
-            x.arc(p.x,p.y,p.r,0,Math.PI*2);
-            x.fillStyle = p.gold ? `rgba(212,175,55,${p.a})` : `rgba(122,0,0,${p.a})`;
-            x.fill();
-        });
-        for(let i=0;i<pts.length;i++){
-            for(let j=i+1;j<pts.length;j++){
-                const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
-                if(d<110){
-                    x.beginPath();
-                    x.moveTo(pts[i].x,pts[i].y);
-                    x.lineTo(pts[j].x,pts[j].y);
-                    x.strokeStyle=`rgba(212,175,55,${.08*(1-d/110)})`;
-                    x.lineWidth=.5;
-                    x.stroke();
+    <title>AURA & ESSENCE | Luxury Perfumes, Bags & Slippers</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            white: '#ffffff',
+                            offwhite: '#faf9f5',
+                            cream: '#f3efe6',
+                            beige: '#e2dad0',
+                            darkbrown: '#1a1412',
+                            champagne: '#c5a059',
+                            champagnelight: '#dfbc73',
+                            rosegold: '#b76e79',
+                            mutedgray: '#6b7280',
+                            charcoal: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        editorial: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
                 }
             }
         }
-        requestAnimationFrame(draw);
+    </script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #111827;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+        }
+
+        .card-3d-wrapper {
+            perspective: 1000px;
+        }
+
+        .card-3d {
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-3d:hover {
+            box-shadow: 0 25px 50px -12px rgba(197, 160, 89, 0.2);
+            transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #faf9f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5a059;
+            border-radius: 4px;
+        }
+
+@keyframes orderNowAttention {
+    0%, 65%, 100% {
+        transform: scale(1) translateX(0);
     }
-    draw();
-})();
 
-/* ── STICKY HEADER + SCROLL-TOP ── */
-const hdr = document.getElementById('site-header');
-const stb = document.getElementById('scrollTopBtn');
-addEventListener('scroll', ()=>{
-    hdr.classList.toggle('scrolled', scrollY>60);
-    stb.classList.toggle('show', scrollY>400);
-});
+    68% { transform: scale(1.3) translateX(-5px); }
+    69% { transform: scale(1.3) translateX(5px); }
+    70% { transform: scale(1.3) translateX(-5px); }
+    71% { transform: scale(1.3) translateX(5px); }
+    72% { transform: scale(1.3) translateX(-5px); }
+    73% { transform: scale(1.3) translateX(5px); }
+    74% { transform: scale(1.3) translateX(-5px); }
+    75% { transform: scale(1.3) translateX(5px); }
+    76% { transform: scale(1.3) translateX(-4px); }
+    77% { transform: scale(1.3) translateX(4px); }
+    78% { transform: scale(1.3) translateX(-3px); }
+    80% { transform: scale(1.3) translateX(0); }
+}
 
-/* ── INTERSECTION OBSERVER — generic .reveal ── */
-const revObs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
-},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+.nav-link.active {
+    color: #8B5E3C !important;
+}
 
-/* ── PRODUCT CARDS — staggered reveal ── */
-const cardObs = new IntersectionObserver(entries=>{
-    entries.forEach((e,i)=>{
-        if(e.isIntersecting){
-            setTimeout(()=>e.target.classList.add('card-visible'), i*120);
-            cardObs.unobserve(e.target);
-        }
-    });
-},{threshold:0.1});
-document.querySelectorAll('.product-card').forEach(el=>cardObs.observe(el));
+.order-now-move {
+    display: inline-block;
+    animation: orderNowAttention 3.8s ease-in-out infinite;
+    transform-origin: center;
+}
 
-/* ── PROCEDURE BOXES — staggered slide-in ── */
-const boxObs = new IntersectionObserver(entries=>{
-    entries.forEach((e,i)=>{
-        if(e.isIntersecting){
-            setTimeout(()=>e.target.classList.add('box-visible'), i*80);
-            boxObs.unobserve(e.target);
-        }
-    });
-},{threshold:0.08});
-document.querySelectorAll('.procedure-box, .note-box').forEach(el=>boxObs.observe(el));
+@keyframes whatsappFlash {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
 
-/* ── 3-D CARD TILT on hover ── */
-document.querySelectorAll('.product-card').forEach(card=>{
-    card.addEventListener('mousemove', e=>{
-        const r = card.getBoundingClientRect();
-        const xp = (e.clientX-r.left)/r.width -.5;
-        const yp = (e.clientY-r.top)/r.height -.5;
-        card.style.transition = 'box-shadow 0.1s';
-        card.style.transform = `perspective(700px) rotateY(${xp*5}deg) rotateX(${-yp*5}deg) translateY(-2px) scale(1.01)`;
-        card.style.boxShadow = `${-xp*8}px ${-yp*8}px 12px rgba(122,0,0,0.10)`;
-    });
-    card.addEventListener('mouseleave', ()=>{
-        card.style.transition = 'transform 0.55s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s';
-        card.style.transform = '';
-        card.style.boxShadow = '';
-    });
+    50% {
+        transform: scale(1.12);
+        filter: brightness(1.6);
+    }
+}
+
+@media (max-width: 1023px) {
+    /* Mobile Header */
+    #site-header {
+        min-height: 95px;
+        overflow: visible;
+    }
+
+@media (max-width: 1023px) {
+
+    #site-header video {
+        width: 150%;
+        height: 119%;
+        object-fit: cover;
+        transform: translateX(-0.1%);
+        opacity: 0.8;
+        clip-path: inset(0 0 17% 0);
+    }
+
+}
+
+    #site-header img[alt="BLUTE"] {
+        width: 130px;
+        height: auto;
+        display: block;
+    }
+
+    /* Mobile Hero Leaves Video */
+    #carousel-track > video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: none;
+        opacity: 0.7;
+    }
+}
+#site-header {
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+#site-header.scrolled {
+    border-bottom: 1.5px solid #c5a059;
+}
+@media (max-width: 1023px) {
+    #mobile-menu-btn {
+        z-index: 9999 !important;
+        pointer-events: auto !important;
+        cursor: pointer;
+    }
+
+    #mobile-menu {
+        z-index: 9998 !important;
+    }
+}
+    </style>
+</head>
+<body class="bg-luxury-white text-luxury-charcoal antialiased selection:bg-luxury-champagne selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-luxury-darkbrown text-luxury-champagnelight text-xs lg:text-[14.4px] py-2.5 px-4 text-center tracking-widest font-bold border-b border-luxury-champagne/20">
+          ENJOY COMPLIMENTARY EXPRESS DELIVERY   <span class="text-luxury-white font-bold">ACROSS KARACHI  </span>
+    </div>
+
+<!-- Header / Navigation -->
+<header id="site-header" class="sticky top-0 z-50 glass-header transition-all duration-300 shadow-sm relative">
+
+<video autoplay muted loop playsinline
+    class="absolute inset-0 w-full h-full object-cover z-[5] opacity-70 pointer-events-none">
+    <source src="Pattiyan_10_sec_1920x540.mp4" type="video/mp4">
+</video>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-24 py-2 flex items-center justify-center lg:justify-between relative z-10">
+    <button id="mobile-menu-btn"
+        
+        class="lg:hidden absolute right-2 -top-1 z-[100] text-luxury-darkbrown text-xl p-2 focus:outline-none cursor-pointer">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.nav-link');
+
+    function setActiveMenu() {
+        const sections = ['hero', 'categories', 'products', 'about', 'contact'];
+        let current = 'hero';
+
+        sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section && window.scrollY >= section.offsetTop - 200) {
+                current = id;
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+    }
+
+    window.addEventListener('scroll', setActiveMenu);
+    setActiveMenu();
 });
 </script>
-<!-- CHAT BOT START -->
-
-<style>
-
-#hello-msg{
-    position:fixed;
-    right:20px;
-    bottom:125px;
-    background:#25D366;
-    color:white;
-    padding:8px 15px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:bold;
-    z-index:9999;
-    animation:helloPop 2s infinite;
-}
-
-
-/* Chatbot Button */
-
-#chatbot-btn{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:88px;
-    height:88px;
-    cursor:pointer;
-    z-index:9999;
-    animation:floatBot 3s ease-in-out infinite;
-}
-
-
-#chatbot-btn img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:transparent;
-}
-
-
-
-/* Chat Box */
-
-#chat-box{
-    display:none;
-    position:fixed;
-    right:20px;
-    bottom:120px;
-    width:320px;
-    background:#ffffff;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.3);
-    z-index:9999;
-    overflow:hidden;
-}
-
-
-.chat-header{
-    background:#25D366;
-    color:white;
-    padding:15px;
-    font-weight:bold;
-}
-
-
-.close-chat{
-    float:right;
-    cursor:pointer;
-}
-
-
-.chat-body{
-    padding:15px;
-}
-
-
-.chat-body textarea{
-    width:100%;
-    height:100px;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    resize:none;
-    box-sizing:border-box;
-}
-
-
-.send-btn{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    background:#25D366;
-    color:white;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-
-
-/* Bot Up Down Movement */
-
-@keyframes floatBot{
-
-    0%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-
-    100%{
-        transform:translateY(0);
-    }
-
-}
-
-
-
-/* Hello Animation */
-
-@keyframes helloPop{
-
-    0%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-5px);
-    }
-
-    100%{
-        transform:translateY(0);
-    }
-
-}
-
-</style>
-
-
-
-<!-- Hello -->
-
-<div id="hello-msg">
-👋 Hello
-</div>
-
-
-
-<!-- Chatbot -->
-
-<div id="chatbot-btn" onclick="openChat()">
-
-<img src="robot.gif" alt="Chat Bot">
-
-</div>
-
-
-
-
-<!-- Chat Window -->
-
-<div id="chat-box">
-
-<div class="chat-header">
-
-Chat With Us
-
-<span class="close-chat" onclick="closeChat()">✕</span>
-
-</div>
-
-
-<div class="chat-body">
-
-<textarea id="message" placeholder="Type your message here..."></textarea>
-
-
-<button class="send-btn" onclick="sendWhatsApp()">
-Send WhatsApp
-</button>
-
-
-</div>
-
-</div>
-
-
 
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-function openChat(){
+    if (mobileMenuBtn && mobileMenu) {
 
-document.getElementById('chat-box').style.display='block';
+        mobileMenuBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+        });
 
-}
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth <= 1023) {
+                if (
+                    !mobileMenu.contains(e.target) &&
+                    !mobileMenuBtn.contains(e.target)
+                ) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
 
+        mobileMenu.querySelectorAll('.mobile-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-function closeChat(){
-
-document.getElementById('chat-box').style.display='none';
-
-}
-
-
-function sendWhatsApp(){
-
-var msg=document.getElementById('message').value;
-
-
-if(msg==""){
-
-alert("Please type a message");
-
-return;
-
-}
-
-
-var phone="971561078553";
-
-
-var url="https://wa.me/"+phone+"?text="+encodeURIComponent(msg);
-
-
-window.open(url,"_blank");
-
-}
-
+    }
+});
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const whatsapp = document.querySelector('.whatsapp-button');
 
-<!-- CHAT BOT END -->
+    if (whatsapp) {
+        setInterval(function () {
+            whatsapp.classList.remove('whatsapp-flash-active');
+            void whatsapp.offsetWidth;
+            whatsapp.classList.add('whatsapp-flash-active');
+        }, 3800);
+    }
+});
+</script>
+
+<script>
+window.addEventListener('scroll', function () {
+    const header = document.getElementById('site-header');
+
+    if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+</script>
+
+            <a href="#" class="flex flex-col items-center lg:items-start group leading-none py-1 lg:-translate-x-[1mm] relative z-10">
+                <img src="blute_logo.png" alt="BLUTE" class="w-[144px] sm:w-[169px] h-auto object-contain" />
+                <span class="mt-1.5 translate-x-[0.1mm] lg:translate-x-[1.5mm] text-[10.5px] sm:text-[11px] tracking-[0.22em] text-luxury-mutedgray uppercase font-sans font-bold whitespace-nowrap">PRECISION <span class="text-luxury-champagne text-[120%]">•</span> RARE <span class="text-luxury-champagne text-[120%]">•</span> EXQUISITE</span>
+            </a>
+
+<nav class="hidden lg:flex items-center gap-8 text-xs tracking-widest uppercase font-semibold relative lg:left-[25mm]">
+    <a href="#hero" class="nav-link text-luxury-darkbrown hover:text-luxury-champagne transition-all duration-300 hover:scale-[1.2] origin-center text-[110%]">Home</a>
+    <a href="#categories" class="nav-link text-luxury-darkbrown hover:text-luxury-champagne transition-all duration-300 hover:scale-[1.2] origin-center text-[110%]">Categories</a>
+    <a href="#products" class="nav-link text-luxury-darkbrown hover:text-luxury-champagne transition-all duration-300 hover:scale-[1.2] origin-center text-[110%]">Collection</a>
+    <a href="#about" class="nav-link text-luxury-darkbrown hover:text-luxury-champagne transition-all duration-300 hover:scale-[1.2] origin-center text-[110%]">Our Story</a>
+    <a href="#contact" class="nav-link text-luxury-darkbrown hover:text-luxury-champagne transition-all duration-300 hover:scale-[1.2] origin-center text-[110%]">Contact</a>
+</nav>
+
+<div class="hidden lg:flex items-center space-x-4 lg:translate-x-[1mm]">
+    <!-- Order Now aur WhatsApp Button -->
+    <div class="flex flex-col items-center">
+        <a href="#products" class="order-now-move text-luxury-champagne font-bold text-[11px] sm:text-[13.2px] tracking-wider mb-2">
+            ORDER NOW
+        </a>
+        <a href="https://wa.me/923000000000?text=Hello%20Aura%20%26%20Essence,%20I%20would%20like%20to%20inquire%20about%20your%20luxury%20collection."
+           target="_blank"
+           class="whatsapp-button inline-flex items-center space-x-1.5 sm:space-x-2 bg-emerald-700 hover:bg-emerald-600 text-white text-[10px] sm:text-xs px-3 sm:px-4 py-1.5 sm:py-2 rounded-full tracking-wider transition-all shadow-md translate-y-1">
+            <i class="fa-brands fa-whatsapp text-xs sm:text-sm"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- 3 Social Icons (Moved further right & 15% scale on hover) -->
+    <div class="flex flex-col space-y-2 ml-6 sm:ml-10 translate-x-2 sm:translate-x-4">
+        <a href="#" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-[#D4AF37] shadow-md flex items-center justify-center hover:scale-[1.15] transition-all p-[1px]">
+            <img src="FB.jpg" alt="Facebook" class="w-full h-full object-cover rounded-full">
+        </a>
+        <a href="#" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-[#D4AF37] shadow-md flex items-center justify-center hover:scale-[1.15] transition-all p-[1px]">
+            <img src="insta.jpg" alt="Instagram" class="w-full h-full object-cover rounded-full">
+        </a>
+        <a href="#" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-[#D4AF37] shadow-md flex items-center justify-center hover:scale-[1.15] transition-all p-[1px]">
+            <img src="tiktok.jpg" alt="TikTok" class="w-full h-full object-cover rounded-full">
+        </a>
+    </div>
+</div>
+
+<div id="mobile-menu" class="hidden lg:hidden absolute right-0 top-10 w-[135px] glass-panel border-t border-luxury-champagne/20 px-4 py-4 space-y-2">
+    <a href="#hero" class="block text-[11px] tracking-widest text-luxury-darkbrown uppercase font-medium mobile-link">Home</a>
+    <a href="#categories" class="block text-[11px] tracking-widest text-luxury-mutedgray uppercase font-medium mobile-link">Categories</a>
+    <a href="#products" class="block text-[11px] tracking-widest text-luxury-mutedgray uppercase font-medium mobile-link">Collection</a>
+    <a href="#about" class="block text-[11px] tracking-widest text-luxury-mutedgray uppercase font-medium mobile-link">Our Story</a>
+    <a href="#contact" class="block text-[11px] tracking-widest text-luxury-mutedgray uppercase font-medium mobile-link">Contact</a>
+</div>
+    </header>
+
+    <!-- HERO SECTION WITH 3 CAROUSEL BANNERS -->
+    <section id="hero" class="relative h-[90vh] w-full overflow-hidden bg-luxury-offwhite">
+        <!-- Carousel Slides Container -->
+        <div id="carousel-track" class="relative w-full h-full">
+            
+            <!-- Slide 1: Perfumes -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100 z-10 flex items-center justify-center">
+                <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=1920&q=80" alt="Luxury Perfumes" class="w-full h-full object-cover scale-105 filter brightness-75">
+                    <div class="absolute inset-0 bg-gradient-to-r from-luxury-white/95 via-luxury-white/60 to-transparent"></div>
+                </div>
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-xl text-left">
+                        <span class="inline-block text-luxury-champagne text-xs sm:text-sm tracking-[0.4em] uppercase mb-4 font-bold px-4 py-1.5 rounded-full border border-luxury-champagne/40 bg-white/80 backdrop-blur-md shadow-sm">
+                            Haute Parfumerie Collection
+                        </span>
+                        <h1 class="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal text-luxury-darkbrown tracking-wider mb-6 leading-tight">
+                            Aura of <span class="italic text-luxury-champagne font-serif">Elegance.</span>
+                        </h1>
+                        <p class="font-sans text-sm sm:text-base text-luxury-mutedgray max-w-lg mb-8 font-light tracking-wide leading-relaxed">
+                            Discover signature scents crafted with rare oud, Bulgarian rose, and amber for an unforgettable presence.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <a href="#products" onclick="filterProducts('Perfumes')" class="w-full sm:w-auto bg-luxury-darkbrown text-luxury-white font-semibold text-xs uppercase tracking-[0.25em] px-8 py-4 rounded-full hover:bg-luxury-champagne hover:text-luxury-darkbrown transition-all shadow-xl text-center">
+                                Shop Perfumes
+                            </a>
+                            <a href="#categories" class="w-full sm:w-auto bg-white/90 text-luxury-darkbrown font-medium text-xs uppercase tracking-[0.25em] px-8 py-4 rounded-full hover:bg-luxury-cream transition-all border border-luxury-champagne/40 text-center shadow-sm">
+                                Explore Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Designer Bags -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 flex items-center justify-center">
+                <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1920&q=80" alt="Designer Bags" class="w-full h-full object-cover scale-105 filter brightness-75">
+                    <div class="absolute inset-0 bg-gradient-to-r from-luxury-white/95 via-luxury-white/60 to-transparent"></div>
+                </div>
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-xl text-left">
+                        <span class="inline-block text-luxury-champagne text-xs sm:text-sm tracking-[0.4em] uppercase mb-4 font-bold px-4 py-1.5 rounded-full border border-luxury-champagne/40 bg-white/80 backdrop-blur-md shadow-sm">
+                            Leather Craftsmanship
+                        </span>
+                        <h1 class="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal text-luxury-darkbrown tracking-wider mb-6 leading-tight">
+                            Crafted For <span class="italic text-luxury-champagne font-serif">Distinction.</span>
+                        </h1>
+                        <p class="font-sans text-sm sm:text-base text-luxury-mutedgray max-w-lg mb-8 font-light tracking-wide leading-relaxed">
+                            Timeless ladies purses and designer handbags engineered with butter-soft Italian leather and gold hardware.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <a href="#products" onclick="filterProducts('Bags')" class="w-full sm:w-auto bg-luxury-darkbrown text-luxury-white font-semibold text-xs uppercase tracking-[0.25em] px-8 py-4 rounded-full hover:bg-luxury-champagne hover:text-luxury-darkbrown transition-all shadow-xl text-center">
+                                Shop Bags
+                            </a>
+                            <a href="#categories" class="w-full sm:w-auto bg-white/90 text-luxury-darkbrown font-medium text-xs uppercase tracking-[0.25em] px-8 py-4 rounded-full hover:bg-luxury-cream transition-all border border-luxury-champagne/40 text-center shadow-sm">
+                                Explore Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Slippers & Footwear -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 flex items-center justify-center">
+                <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1920&q=80" alt="Elegant Slippers & Footwear" class="w-full h-full object-cover scale-105 filter brightness-75">
+                    <div class="absolute inset-0 bg-gradient-to-r from-luxury-white/95 via-luxury-white/60 to-transparent"></div>
+                </div>
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-xl text-left">
+                        <span class="inline-block text-luxury-champagne text-xs sm:text-sm tracking-[0.4em] uppercase mb-4 font-bold px-4 py-1.5 rounded-full border border-luxury-champagne/40 bg-white/80 backdrop-blur-md shadow-sm">
+                            Haute Footwear Atelier
+                        </span>
+                        <h1 class="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal text-luxury-darkbrown tracking-wider mb-6 leading-tight">
+                            Step in Pure <span class="italic text-luxury-champagne font-serif">Luxury.</span>
+                        </h1>
+                        <p class="font-sans text-sm sm:text-base text-luxury-mutedgray max-w-lg mb-8 font-light tracking-wide leading-relaxed">
+                            Exquisite sandals, embellished sliders, and luxurious slippers designed for effortless grace and unmatched comfort.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <a href="#products" onclick="filterProducts('Slippers')" class="w-full sm:w-auto bg-luxury-darkbrown text-luxury-white font-semibold text-xs uppercase tracking-[0.25em] px-8 py-4 rounded-full hover:bg-luxury-champagne hover:text-luxury-darkbrown transition-all shadow-xl text-center">
+                                Shop Slippers
+                            </a>
+                            <a href="#categories" class="w-full sm:w-auto bg-white/90 text-luxury-darkbrown font-medium text-xs uppercase tracking-[0.25em] px-8 py-4 rounded-full hover:bg-luxury-cream transition-all border border-luxury-champagne/40 text-center shadow-sm">
+                                Explore Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Navigation Arrows -->
+        <button onclick="prevSlide()" class="absolute left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/80 border border-luxury-champagne/30 flex items-center justify-center text-luxury-darkbrown hover:bg-luxury-champagne hover:text-white transition-all shadow-md">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button onclick="nextSlide()" class="absolute right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/80 border border-luxury-champagne/30 flex items-center justify-center text-luxury-darkbrown hover:bg-luxury-champagne hover:text-white transition-all shadow-md">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Carousel Dots -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-3">
+            <button onclick="currentSlide(0)" class="carousel-dot w-3 h-3 rounded-full bg-luxury-champagne transition-all shadow-sm"></button>
+            <button onclick="currentSlide(1)" class="carousel-dot w-3 h-3 rounded-full bg-luxury-champagne/30 transition-all shadow-sm"></button>
+            <button onclick="currentSlide(2)" class="carousel-dot w-3 h-3 rounded-full bg-luxury-champagne/30 transition-all shadow-sm"></button>
+        </div>
+    </section>
+
+    <!-- MOVING PRODUCT BAR -->
+    <div class="bg-luxury-cream py-4 border-y border-luxury-champagne/30 overflow-hidden relative shadow-inner">
+        <div class="animate-marquee whitespace-nowrap flex items-center space-x-12 text-xs font-bold tracking-[0.25em] text-luxury-darkbrown">
+            <span>NEW ARRIVALS</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>LUXURY PERFUMES</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>DESIGNER BAGS</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>EXQUISITE SLIPPERS &amp; FOOTWEAR</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>COMPLIMENTARY SHIPPING OVER PKR 10,000</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>HANDCRAFTED ELEGANCE</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>NEW ARRIVALS</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>LUXURY PERFUMES</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>DESIGNER BAGS</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>EXQUISITE SLIPPERS &amp; FOOTWEAR</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>COMPLIMENTARY SHIPPING OVER PKR 10,000</span>
+            <span class="text-luxury-champagne">✦</span>
+            <span>HANDCRAFTED ELEGANCE</span>
+            <span class="text-luxury-champagne">✦</span>
+        </div>
+    </div>
+
+    <!-- CATEGORY SECTION -->
+    <section id="categories" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-luxury-champagne text-xs uppercase tracking-[0.3em] font-bold block mb-3">Curated Ateliers</span>
+            <h2 class="font-editorial text-3xl sm:text-5xl text-luxury-darkbrown tracking-wide">The Pillars of Elegance</h2>
+            <div class="w-16 h-[2px] bg-luxury-champagne mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Category 1: Perfumes -->
+            <div onclick="filterCategoryFromCard('Perfumes')" class="card-3d-wrapper group cursor-pointer">
+                <div class="card-3d relative h-[420px] rounded-2xl overflow-hidden bg-luxury-offwhite border border-luxury-champagne/30 p-2 flex flex-col justify-end shadow-md">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" alt="Perfumes" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-darkbrown/90 via-luxury-darkbrown/30 to-transparent"></div>
+                    </div>
+                    <div class="relative z-10 p-6 text-left">
+                        <span class="text-[10px] tracking-[0.3em] text-luxury-champagnelight uppercase font-bold">Haute Scent</span>
+                        <h3 class="font-editorial text-3xl text-white mt-1 mb-2">PERFUMES</h3>
+                        <p class="text-luxury-beige text-xs font-light mb-4 tracking-wide">Find your signature scent.</p>
+                        <span class="inline-flex items-center space-x-2 text-xs text-luxury-champagnelight tracking-widest uppercase font-semibold group-hover:underline">
+                            <span>Explore Category</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Designer Bags -->
+            <div onclick="filterCategoryFromCard('Bags')" class="card-3d-wrapper group cursor-pointer">
+                <div class="card-3d relative h-[420px] rounded-2xl overflow-hidden bg-luxury-offwhite border border-luxury-champagne/30 p-2 flex flex-col justify-end shadow-md">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80" alt="Designer Bags" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-darkbrown/90 via-luxury-darkbrown/30 to-transparent"></div>
+                    </div>
+                    <div class="relative z-10 p-6 text-left">
+                        <span class="text-[10px] tracking-[0.3em] text-luxury-champagnelight uppercase font-bold">Leather Goods</span>
+                        <h3 class="font-editorial text-3xl text-white mt-1 mb-2">DESIGNER BAGS</h3>
+                        <p class="text-luxury-beige text-xs font-light mb-4 tracking-wide">Carry confidence.</p>
+                        <span class="inline-flex items-center space-x-2 text-xs text-luxury-champagnelight tracking-widest uppercase font-semibold group-hover:underline">
+                            <span>Explore Category</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Slippers & Footwear -->
+            <div onclick="filterCategoryFromCard('Slippers')" class="card-3d-wrapper group cursor-pointer">
+                <div class="card-3d relative h-[420px] rounded-2xl overflow-hidden bg-luxury-offwhite border border-luxury-champagne/30 p-2 flex flex-col justify-end shadow-md">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80" alt="Slippers and Footwear" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-luxury-darkbrown/90 via-luxury-darkbrown/30 to-transparent"></div>
+                    </div>
+                    <div class="relative z-10 p-6 text-left">
+                        <span class="text-[10px] tracking-[0.3em] text-luxury-champagnelight uppercase font-bold">Haute Footwear</span>
+                        <h3 class="font-editorial text-3xl text-white mt-1 mb-2">SLIPPERS &amp; FOOTWEAR</h3>
+                        <p class="text-luxury-beige text-xs font-light mb-4 tracking-wide">Walk in effortless grace.</p>
+                        <span class="inline-flex items-center space-x-2 text-xs text-luxury-champagnelight tracking-widest uppercase font-semibold group-hover:underline">
+                            <span>Explore Category</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG SECTION -->
+    <section id="products" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-luxury-champagne/20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-luxury-champagne text-xs uppercase tracking-[0.3em] font-bold block mb-2">Exclusive Catalog</span>
+                <h2 class="font-editorial text-3xl sm:text-5xl text-luxury-darkbrown">Perfumes, Bags &amp; Slippers</h2>
+            </div>
+            
+            <div class="mt-6 md:mt-0 flex items-center space-x-3">
+                <span class="text-xs tracking-wider text-luxury-mutedgray uppercase font-semibold">Sort By:</span>
+                <select id="sort-select" onchange="sortProducts()" class="bg-luxury-offwhite text-luxury-darkbrown text-xs px-4 py-2.5 rounded-lg border border-luxury-champagne/40 focus:outline-none focus:border-luxury-champagne font-medium">
+                    <option value="featured">Featured</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mb-10 pb-4 border-b border-luxury-champagne/20">
+            <button onclick="filterProducts('All')" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold transition-all bg-luxury-darkbrown text-white shadow-sm" data-filter="All">All Items</button>
+            <button onclick="filterProducts('Perfumes')" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-medium transition-all bg-luxury-offwhite text-luxury-mutedgray border border-luxury-champagne/30 hover:border-luxury-champagne hover:text-luxury-darkbrown" data-filter="Perfumes">Perfumes</button>
+            <button onclick="filterProducts('Bags')" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-medium transition-all bg-luxury-offwhite text-luxury-mutedgray border border-luxury-champagne/30 hover:border-luxury-champagne hover:text-luxury-darkbrown" data-filter="Bags">Designer Bags</button>
+            <button onclick="filterProducts('Slippers')" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-medium transition-all bg-luxury-offwhite text-luxury-mutedgray border border-luxury-champagne/30 hover:border-luxury-champagne hover:text-luxury-darkbrown" data-filter="Slippers">Slippers &amp; Footwear</button>
+            <button onclick="filterProducts('New Arrivals')" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-medium transition-all bg-luxury-offwhite text-luxury-mutedgray border border-luxury-champagne/30 hover:border-luxury-champagne hover:text-luxury-darkbrown" data-filter="New Arrivals">New Arrivals</button>
+            <button onclick="filterProducts('Best Sellers')" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-medium transition-all bg-luxury-offwhite text-luxury-mutedgray border border-luxury-champagne/30 hover:border-luxury-champagne hover:text-luxury-darkbrown" data-filter="Best Sellers">Best Sellers</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Populated via JavaScript -->
+        </div>
+    </section>
+
+    <!-- SPECIAL OFFER BANNER -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="relative rounded-3xl overflow-hidden bg-luxury-darkbrown py-16 px-6 sm:px-12 text-center shadow-2xl border border-luxury-champagne/40">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80" alt="Promotional Banner" class="w-full h-full object-cover filter brightness-40">
+                <div class="absolute inset-0 bg-gradient-to-r from-luxury-darkbrown/90 via-luxury-darkbrown/70 to-luxury-darkbrown/90"></div>
+            </div>
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <span class="text-xs uppercase tracking-[0.4em] text-luxury-champagnelight font-bold mb-3 block">Limited Edition Release</span>
+                <h2 class="font-editorial text-3xl sm:text-5xl text-white mb-4">YOUR BEAUTY. YOUR SIGNATURE.</h2>
+                <p class="text-luxury-beige text-sm sm:text-base font-light mb-8 tracking-wide">
+                    Discover our latest arrivals in luxury perfumes, designer handbags, and exquisite footwear crafted for uncompromising elegance.
+                </p>
+                <a href="#products" class="inline-block bg-luxury-champagne text-luxury-darkbrown text-xs uppercase tracking-[0.25em] font-bold px-8 py-4 rounded-full hover:bg-white transition-all shadow-xl">
+                    Shop Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-luxury-champagne/20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="text-luxury-champagne text-xs uppercase tracking-[0.3em] font-bold block">Our Philosophy</span>
+                <h2 class="font-editorial text-3xl sm:text-5xl text-luxury-darkbrown leading-tight">Luxury Should Feel Personal.</h2>
+                <p class="text-luxury-mutedgray text-sm sm:text-base font-light leading-relaxed">
+                    At AURA &amp; ESSENCE, we believe true luxury is intimate, enduring, and deeply personal. Founded with a vision to merge uncompromising quality with contemporary elegance, we curate exquisite perfumes, handcrafted leather bags, and designer footwear designed for the modern discerning woman.
+                </p>
+                <p class="text-luxury-mutedgray text-sm sm:text-base font-light leading-relaxed">
+                    Every formulation and stitch reflects our dedication to artisanal excellence—bringing timeless sophistication straight to your everyday wardrobe.
+                </p>
+                <div class="pt-4 flex items-center space-x-6">
+                    <div>
+                        <span class="font-editorial text-3xl text-luxury-champagne block font-bold">100%</span>
+                        <span class="text-xs uppercase tracking-widest text-luxury-mutedgray font-semibold">Authentic Luxury</span>
+                    </div>
+                    <div class="h-10 w-[1px] bg-luxury-champagne/30"></div>
+                    <div>
+                        <span class="font-editorial text-3xl text-luxury-champagne block font-bold">Free</span>
+                        <span class="text-xs uppercase tracking-widest text-luxury-mutedgray font-semibold">Express Delivery</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative h-[450px] rounded-2xl overflow-hidden bg-luxury-offwhite border border-luxury-champagne/30 p-2 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" alt="Brand Story" class="w-full h-full object-cover rounded-xl filter brightness-95">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-luxury-darkbrown border border-luxury-champagne/40 p-6 rounded-xl shadow-2xl backdrop-blur-md hidden sm:block text-white">
+                    <span class="font-editorial text-xl text-luxury-champagnelight block italic">"Elegance is refusal."</span>
+                    <span class="text-[10px] uppercase tracking-widest text-luxury-beige mt-1 block">— House of Aura &amp; Essence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-luxury-darkbrown border-t border-luxury-champagne/30 text-white pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="space-y-4">
+                    <span class="font-editorial text-2xl tracking-[0.25em] text-luxury-champagnelight block font-bold">AURA &amp; ESSENCE</span>
+                    <p class="text-xs text-luxury-beige leading-relaxed">
+                        Redefining modern luxury through signature perfumes, designer bags, and exquisite slippers &amp; footwear.
+                    </p>
+                    <div class="pt-2 flex items-center space-x-4 text-luxury-champagne text-lg">
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://wa.me/923000000000" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase tracking-[0.25em] text-luxury-champagne font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-xs tracking-wider text-luxury-beige">
+                        <li><a href="#hero" class="hover:text-luxury-champagnelight transition-colors">Home</a></li>
+                        <li><a href="#categories" class="hover:text-luxury-champagnelight transition-colors">Categories</a></li>
+                        <li><a href="#products" class="hover:text-luxury-champagnelight transition-colors">Collection</a></li>
+                        <li><a href="#about" class="hover:text-luxury-champagnelight transition-colors">Our Story</a></li>
+                        <li><a href="#contact" class="hover:text-luxury-champagnelight transition-colors">Boutique &amp; Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase tracking-[0.25em] text-luxury-champagne font-bold mb-6">Customer Care</h4>
+                    <ul class="space-y-3 text-xs tracking-wider text-luxury-beige">
+                        <li><a href="#" onclick="showPolicyModal('privacy')" class="hover:text-luxury-champagnelight transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showPolicyModal('terms')" class="hover:text-luxury-champagnelight transition-colors">Terms &amp; Conditions</a></li>
+                        <li><a href="#" onclick="showPolicyModal('shipping')" class="hover:text-luxury-champagnelight transition-colors">Shipping &amp; Returns</a></li>
+                        <li><a href="https://wa.me/923000000000" target="_blank" class="hover:text-luxury-champagnelight transition-colors">Order on WhatsApp</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-xs uppercase tracking-[0.25em] text-luxury-champagne font-bold mb-6">Boutique Address</h4>
+                    <p class="text-xs text-luxury-beige leading-relaxed">
+                        <strong class="text-white">Arshad Tailor Shop</strong><br>
+                        Opposite Taiba Masjid, Qasba Islamia Colony No. 2, Kati Pahari, Karachi, Pakistan.
+                    </p>
+                    <p class="text-xs text-luxury-beige pt-2">
+                        <strong class="text-white">WhatsApp:</strong> +92 300 0000000<br>
+                        <strong class="text-white">Email:</strong> concierge@auraessence.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-luxury-champagne/20 flex flex-col sm:flex-row items-center justify-between text-xs text-luxury-beige tracking-wider">
+                <p>&copy; 2026 AURA &amp; ESSENCE. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <span>Designed for Luxury</span>
+                    <span>✦</span>
+                    <span>Karachi, Pakistan</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-luxury-white border-l border-luxury-champagne/30 flex flex-col text-luxury-darkbrown shadow-2xl">
+                <div class="p-6 border-b border-luxury-champagne/20 flex items-center justify-between bg-luxury-offwhite">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-bag-shopping text-luxury-champagne text-lg"></i>
+                        <h3 class="font-editorial text-2xl tracking-wide font-bold">Your Shopping Bag</h3>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-luxury-mutedgray hover:text-luxury-darkbrown text-xl p-1">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-luxury-champagne/10">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="p-6 border-t border-luxury-champagne/20 bg-luxury-offwhite space-y-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-luxury-mutedgray uppercase tracking-wider text-xs font-semibold">Subtotal</span>
+                        <span id="cart-subtotal" class="font-bold text-luxury-darkbrown text-base">PKR 0</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-luxury-mutedgray">
+                        <span>Express Delivery</span>
+                        <span class="text-emerald-600 font-bold">FREE</span>
+                    </div>
+                    <div class="pt-2 border-t border-luxury-champagne/20 flex items-center justify-between">
+                        <span class="text-luxury-darkbrown font-bold uppercase tracking-wider text-xs">Total</span>
+                        <span id="cart-total" class="font-editorial text-2xl font-bold text-luxury-champagne">PKR 0</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3 pt-2">
+                        <button onclick="checkoutCart()" class="w-full bg-luxury-darkbrown hover:bg-luxury-champagne text-white hover:text-luxury-darkbrown text-xs uppercase tracking-[0.2em] font-bold py-3.5 rounded-full transition-all shadow-lg text-center">
+                            Proceed to Checkout
+                        </button>
+                        <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white text-xs uppercase tracking-[0.2em] font-bold py-3.5 rounded-full transition-all shadow-lg flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>Order on WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
+        <div onclick="closeQuickView()" class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+        <div class="relative bg-luxury-white rounded-2xl max-w-3xl w-full p-6 sm:p-8 border border-luxury-champagne/40 text-luxury-darkbrown shadow-2xl z-10 overflow-hidden">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-luxury-mutedgray hover:text-luxury-darkbrown text-xl p-2 z-20">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quick-view-content" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- WISHLIST MODAL -->
+    <div id="wishlist-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
+        <div onclick="closeWishlistModal()" class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+        <div class="relative bg-luxury-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 border border-luxury-champagne/40 text-luxury-darkbrown shadow-2xl z-10">
+            <div class="flex items-center justify-between pb-4 border-b border-luxury-champagne/20 mb-6">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-heart text-luxury-rosegold text-lg"></i>
+                    <h3 class="font-editorial text-2xl tracking-wide font-bold">Your Wishlist</h3>
+                </div>
+                <button onclick="closeWishlistModal()" class="text-luxury-mutedgray hover:text-luxury-darkbrown text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="wishlist-items-container" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- POLICY MODAL -->
+    <div id="policy-modal" class="fixed inset-0 z-50 flex items-center justify-center px-4 hidden">
+        <div onclick="closePolicyModal()" class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+        <div class="relative bg-luxury-white rounded-2xl max-w-xl w-full p-6 sm:p-8 border border-luxury-champagne/40 text-luxury-darkbrown shadow-2xl z-10">
+            <div class="flex items-center justify-between pb-4 border-b border-luxury-champagne/20 mb-4">
+                <h3 id="policy-title" class="font-editorial text-2xl tracking-wide text-luxury-darkbrown font-bold">Policy</h3>
+                <button onclick="closePolicyModal()" class="text-luxury-mutedgray hover:text-luxury-darkbrown text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="policy-body" class="text-xs sm:text-sm text-luxury-mutedgray space-y-3 leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+    <script>
+        // Hero Carousel State & Logic
+        let currentHeroIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let heroInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'z-0');
+                    slide.classList.add('opacity-100', 'z-10');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-10');
+                    slide.classList.add('opacity-0', 'z-0');
+                }
+            });
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-luxury-champagne/30');
+                    dot.classList.add('bg-luxury-champagne');
+                } else {
+                    dot.classList.remove('bg-luxury-champagne');
+                    dot.classList.add('bg-luxury-champagne/30');
+                }
+            });
+            currentHeroIndex = index;
+        }
+
+        function nextSlide() {
+            let next = (currentHeroIndex + 1) % slides.length;
+            showSlide(next);
+            resetTimer();
+        }
+
+        function prevSlide() {
+            let prev = (currentHeroIndex - 1 + slides.length) % slides.length;
+            showSlide(prev);
+            resetTimer();
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+            resetTimer();
+        }
+
+        function resetTimer() {
+            clearInterval(heroInterval);
+            heroInterval = setInterval(nextSlide, 6000);
+        }
+
+        // Product Catalog (18 total: 6 Perfumes, 6 Designer Bags, 6 Slippers & Footwear)
+        const products = [
+            // PERFUMES (6)
+            {
+                id: 1,
+                name: "Noir Imperial Extrait de Parfum",
+                category: "Perfumes",
+                price: 18500,
+                rating: 4.9,
+                reviews: 128,
+                image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+                description: "An opulent blend of dark amber, Bulgarian rose, and smoked oud, capturing midnight mystery.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 2,
+                name: "Rose de Versailles Eau de Parfum",
+                category: "Perfumes",
+                price: 15200,
+                rating: 4.8,
+                reviews: 94,
+                image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+                description: "A majestic floral symphony featuring May roses, white peony, and warm Madagascar vanilla.",
+                tag: "New Arrival",
+                isNew: true
+            },
+            {
+                id: 3,
+                name: "Velvet Saffron Elixir",
+                category: "Perfumes",
+                price: 21000,
+                rating: 5.0,
+                reviews: 76,
+                image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+                description: "Exquisite Spanish saffron entwined with leather accords, golden honey, and rich sandalwood.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 4,
+                name: "Jasmin Noir Prestige",
+                category: "Perfumes",
+                price: 14800,
+                rating: 4.7,
+                reviews: 62,
+                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+                description: "Night-blooming Indian jasmine paired with creamy almond milk and precious tonka bean.",
+                tag: "",
+                isNew: true
+            },
+            {
+                id: 5,
+                name: "Oud Royale Cologne Intense",
+                category: "Perfumes",
+                price: 24500,
+                rating: 4.9,
+                reviews: 110,
+                image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+                description: "A regal concentration of aged Cambodian oud wood balanced with crisp bergamot and pink pepper.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 6,
+                name: "Blanc Solstice Parfum",
+                category: "Perfumes",
+                price: 13500,
+                rating: 4.6,
+                reviews: 45,
+                image: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80",
+                description: "A pristine crystalline fragrance with white musk, lily of the valley, and crisp morning dew.",
+                tag: "New Arrival",
+                isNew: true
+            },
+
+            // DESIGNER BAGS (6)
+            {
+                id: 7,
+                name: "The Milano Signature Tote",
+                category: "Bags",
+                price: 32000,
+                rating: 4.9,
+                reviews: 156,
+                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
+                description: "Handcrafted from full-grain Italian calfskin with champagne-gold hardware and suede lining.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 8,
+                name: "Aura Evening Clutch in Noir",
+                category: "Bags",
+                price: 22500,
+                rating: 4.8,
+                reviews: 88,
+                image: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=800&q=80",
+                description: "An architectural masterpiece adorned with crystals and a detachable rose-gold chain.",
+                tag: "New Arrival",
+                isNew: true
+            },
+            {
+                id: 9,
+                name: "Champs-Élysées Quilted Crossbody",
+                category: "Bags",
+                price: 28900,
+                rating: 4.9,
+                reviews: 142,
+                image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+                description: "Classic diamond quilting in supple cream leather complemented by an interwoven chain strap.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 10,
+                name: "Venezia Structured Satchel",
+                category: "Bags",
+                price: 35000,
+                rating: 5.0,
+                reviews: 91,
+                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80",
+                description: "Rigid structure meets butter-soft textured leather, engineered for the executive woman.",
+                tag: "",
+                isNew: false
+            },
+            {
+                id: 11,
+                name: "Florence Mini Vanity Case",
+                category: "Bags",
+                price: 19500,
+                rating: 4.7,
+                reviews: 53,
+                image: "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=80",
+                description: "A charming structured cylinder bag inspired by vintage vanity trunks with a secure clasp.",
+                tag: "New Arrival",
+                isNew: true
+            },
+            {
+                id: 12,
+                name: "Monaco Crocodile-Embossed Clutch",
+                category: "Bags",
+                price: 26000,
+                rating: 4.8,
+                reviews: 79,
+                image: "https://images.unsplash.com/photo-1533518463841-d62e1fc91373?auto=format&fit=crop&w=800&q=80",
+                description: "Glossy deep-brown crocodile-effect leather with a minimalist magnetic closure clasp.",
+                tag: "Best Seller",
+                isNew: false
+            },
+
+            // SLIPPERS & FOOTWEAR (6)
+            {
+                id: 13,
+                name: "Palazzo Embellished Satin Slider",
+                category: "Slippers",
+                price: 12500,
+                rating: 4.9,
+                reviews: 115,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80",
+                description: "Sumptuous silk satin slippers adorned with crystal brooches and cushioned leather insoles.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 14,
+                name: "Belgravia Gold-Stitched Mule",
+                category: "Slippers",
+                price: 14800,
+                rating: 4.8,
+                reviews: 92,
+                image: "https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?auto=format&fit=crop&w=800&q=80",
+                description: "Handcrafted velvet mules featuring intricate champagne zari embroidery and soft stacked heels.",
+                tag: "New Arrival",
+                isNew: true
+            },
+            {
+                id: 15,
+                name: "Capri Leather House Slide",
+                category: "Slippers",
+                price: 9900,
+                rating: 4.7,
+                reviews: 64,
+                image: "https://images.unsplash.com/photo-1562273138-f46be4ebdf33?auto=format&fit=crop&w=800&q=80",
+                description: "Supple tan nappa leather slides designed for effortless indoor-outdoor luxury lounging.",
+                tag: "",
+                isNew: false
+            },
+            {
+                id: 16,
+                name: "Versailles Crystal Flat Sandal",
+                category: "Slippers",
+                price: 16200,
+                rating: 4.9,
+                reviews: 83,
+                image: "https://images.unsplash.com/photo-1603487742131-4120ec9e527d?auto=format&fit=crop&w=800&q=80",
+                description: "Delicate strappy leather sandals sparkling with hand-set pavé crystals across the instep.",
+                tag: "Best Seller",
+                isNew: false
+            },
+            {
+                id: 17,
+                name: "Monaco Shearling Lounge Slipper",
+                category: "Slippers",
+                price: 11500,
+                rating: 4.8,
+                reviews: 77,
+                image: "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=800&q=80",
+                description: "Plush genuine merino shearling lined slippers offering unmatched warmth and pillowy comfort.",
+                tag: "New Arrival",
+                isNew: true
+            },
+            {
+                id: 18,
+                name: "Riviera Metallic Slide",
+                category: "Slippers",
+                price: 13200,
+                rating: 4.7,
+                reviews: 59,
+                image: "https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?auto=format&fit=crop&w=800&q=80",
+                description: "Rose-gold metallic leather slides with architectural soles and ergonomic arch support.",
+                tag: "Best Seller",
+                isNew: false
+            }
+        ];
+
+        let currentFilter = 'All';
+        let currentSort = 'featured';
+        let cart = [];
+        let wishlist = [];
+
+        function formatPKR(amount) {
+            return 'PKR ' + amount.toLocaleString('en-PK');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            updateWishlistUI();
+            heroInterval = setInterval(nextSlide, 6000);
+
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('site-header');
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md', 'bg-white/95');
+                } else {
+                    header.classList.remove('shadow-md', 'bg-white/95');
+                }
+            });
+
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            
+            let filtered = products.filter(p => {
+                if (currentFilter === 'All') return true;
+                if (currentFilter === 'New Arrivals') return p.isNew || p.tag === 'New Arrival';
+                if (currentFilter === 'Best Sellers') return p.tag === 'Best Seller';
+                return p.category === currentFilter;
+            });
+
+            if (currentSort === 'low-high') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'high-low') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSort === 'newest') {
+                filtered.sort((a, b) => b.id - a.id);
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-16 text-luxury-mutedgray">No luxury items found in this collection.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => {
+                const isWishlisted = wishlist.includes(p.id);
+                const badgeText = p.tag ? `<span class="absolute top-4 left-4 bg-luxury-champagne text-luxury-darkbrown text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold z-10 shadow-sm">${p.tag}</span>` : '';
+                
+                return `
+                    <div class="card-3d-wrapper">
+                        <div class="card-3d relative bg-luxury-offwhite rounded-2xl overflow-hidden border border-luxury-champagne/30 group flex flex-col h-full shadow-md">
+                            ${badgeText}
+                            <button onclick="toggleWishlist(${p.id})" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-luxury-darkbrown hover:text-luxury-champagne transition-colors shadow-sm">
+                                <i class="${isWishlisted ? 'fa-solid text-luxury-rosegold' : 'fa-regular'} fa-heart"></i>
+                            </button>
+
+                            <div class="relative h-72 overflow-hidden bg-luxury-cream cursor-pointer" onclick="openQuickView(${p.id})">
+                                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 filter brightness-95">
+                                <div class="absolute inset-0 bg-gradient-to-t from-luxury-offwhite via-transparent to-transparent opacity-40"></div>
+                            </div>
+
+                            <div class="p-6 flex flex-col flex-1 justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-[10px] tracking-[0.25em] text-luxury-champagne uppercase font-bold">${p.category}</span>
+                                        <div class="flex items-center space-x-1 text-xs text-amber-600">
+                                            <i class="fa-solid fa-star text-[10px]"></i>
+                                            <span class="text-luxury-darkbrown font-semibold">${p.rating}</span>
+                                            <span class="text-luxury-mutedgray text-[10px]">(${p.reviews})</span>
+                                        </div>
+                                    </div>
+                                    <h3 onclick="openQuickView(${p.id})" class="font-editorial text-xl text-luxury-darkbrown font-semibold mb-2 cursor-pointer hover:text-luxury-champagne transition-colors line-clamp-1">${p.name}</h3>
+                                    <p class="text-luxury-mutedgray text-xs font-light line-clamp-2 mb-4 leading-relaxed">${p.description}</p>
+                                </div>
+
+                                <div class="pt-4 border-t border-luxury-champagne/20 flex items-center justify-between mt-auto">
+                                    <span class="font-editorial text-xl font-bold text-luxury-darkbrown">${formatPKR(p.price)}</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button onclick="openQuickView(${p.id})" class="p-2.5 rounded-full bg-white text-luxury-darkbrown hover:text-luxury-champagne border border-luxury-champagne/30 transition-colors text-xs shadow-sm" title="Quick View">
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+                                        <button onclick="addToCart(${p.id})" class="px-4 py-2.5 rounded-full bg-luxury-darkbrown hover:bg-luxury-champagne text-white hover:text-luxury-darkbrown text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center space-x-1.5">
+                                            <i class="fa-solid fa-bag-shopping text-xs"></i>
+                                            <span>Add</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-luxury-offwhite', 'text-luxury-mutedgray', 'border-luxury-champagne/30');
+                    btn.classList.add('bg-luxury-darkbrown', 'text-white', 'font-semibold', 'shadow-sm');
+                } else {
+                    btn.classList.add('bg-luxury-offwhite', 'text-luxury-mutedgray', 'border-luxury-champagne/30');
+                    btn.classList.remove('bg-luxury-darkbrown', 'text-white', 'font-semibold', 'shadow-sm');
+                }
+            });
+            renderProducts();
+        }
+
+        function filterCategoryFromCard(categoryName) {
+            filterProducts(categoryName);
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function sortProducts() {
+            currentSort = document.getElementById('sort-select').value;
+            renderProducts();
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+            showToast(`Added "${product.name}" to your shopping bag.`);
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBadge = document.getElementById('cart-badge');
+            const container = document.getElementById('cart-items-container');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalCount;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-luxury-mutedgray">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-luxury-champagne/40 mb-3"></i>
+                        <p class="text-xs tracking-wider uppercase font-semibold">Your shopping bag is empty.</p>
+                    </div>
+                `;
+                subtotalEl.textContent = formatPKR(0);
+                totalEl.textContent = formatPKR(0);
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = cart.map(item => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div class="py-4 flex items-center justify-between space-x-4">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg border border-luxury-champagne/30 flex-shrink-0 shadow-sm">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-editorial text-base text-luxury-darkbrown font-semibold truncate">${item.name}</h4>
+                            <span class="text-xs text-luxury-champagne font-bold">${formatPKR(item.price)}</span>
+                            <div class="flex items-center space-x-3 mt-2">
+                                <button onclick="updateCartQuantity(${item.id}, -1)" class="w-6 h-6 rounded bg-luxury-offwhite text-luxury-darkbrown hover:bg-luxury-champagne hover:text-white border border-luxury-champagne/30 flex items-center justify-center text-xs font-bold">-</button>
+                                <span class="text-xs font-semibold text-luxury-darkbrown">${item.quantity}</span>
+                                <button onclick="updateCartQuantity(${item.id}, 1)" class="w-6 h-6 rounded bg-luxury-offwhite text-luxury-darkbrown hover:bg-luxury-champagne hover:text-white border border-luxury-champagne/30 flex items-center justify-center text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-luxury-mutedgray hover:text-luxury-rosegold text-sm p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            subtotalEl.textContent = formatPKR(subtotal);
+            totalEl.textContent = formatPKR(subtotal);
+        }
+
+        function checkoutCart() {
+            if (cart.length === 0) {
+                showToast("Your shopping bag is empty.");
+                return;
+            }
+            showToast("Redirecting to secure luxury checkout...");
+            setTimeout(() => {
+                alert("Thank you for your order with AURA & ESSENCE! Your luxury items will be carefully packaged and dispatched.");
+                cart = [];
+                updateCartUI();
+                toggleCartDrawer();
+            }, 1000);
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast("Your shopping bag is empty. Add items before ordering on WhatsApp.");
+                return;
+            }
+
+            let message = "Hello Aura & Essence, I would like to place an order for the following luxury items:\n\n";
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                message += `${index + 1}. *${item.name}* (${item.category}) x ${item.quantity} - ${formatPKR(item.price * item.quantity)}\n`;
+                subtotal += item.price * item.quantity;
+            });
+            message += `\n*Total Amount:* ${formatPKR(subtotal)} (Free Express Delivery)\n`;
+            message += `\n*Pickup / Delivery Address Reference:*\nArshad Tailor Shop, Opposite Taiba Masjid, Qasba Islamia Colony No. 2, Kati Pahari, Karachi, Pakistan.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/923000000000?text=${encodedMessage}`, '_blank');
+        }
+
+        function openQuickView(productId) {
+            const product = products.find(p => p.id === productId);
+            const modal = document.getElementById('quick-view-modal');
+            const content = document.getElementById('quick-view-content');
+
+            content.innerHTML = `
+                <div class="relative h-80 sm:h-96 rounded-xl overflow-hidden bg-luxury-offwhite shadow-inner">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-4">
+                    <span class="text-[10px] tracking-[0.3em] text-luxury-champagne uppercase font-bold">${product.category}</span>
+                    <h3 class="font-editorial text-2xl sm:text-3xl text-luxury-darkbrown font-semibold">${product.name}</h3>
+                    <div class="flex items-center space-x-2 text-xs text-amber-600">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="text-luxury-darkbrown font-bold">${product.rating} / 5.0</span>
+                        <span class="text-luxury-mutedgray">(${product.reviews} verified reviews)</span>
+                    </div>
+                    <p class="text-luxury-mutedgray text-xs sm:text-sm font-light leading-relaxed">${product.description}</p>
+                    <div class="font-editorial text-2xl font-bold text-luxury-darkbrown">${formatPKR(product.price)}</div>
+                    <div class="pt-4 flex items-center space-x-4">
+                        <button onclick="addToCart(${product.id}); closeQuickView();" class="flex-1 bg-luxury-darkbrown hover:bg-luxury-champagne text-white hover:text-luxury-darkbrown text-xs uppercase tracking-[0.2em] font-bold py-3.5 rounded-full transition-all shadow-lg text-center">
+                            Add to Bag
+                        </button>
+                        <button onclick="toggleWishlist(${product.id})" class="w-12 h-12 rounded-full border border-luxury-champagne/40 flex items-center justify-center text-luxury-darkbrown hover:text-luxury-rosegold transition-colors shadow-sm">
+                            <i class="${wishlist.includes(product.id) ? 'fa-solid text-luxury-rosegold' : 'fa-regular'} fa-heart text-base"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quick-view-modal').classList.add('hidden');
+        }
+
+        function toggleWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                showToast(`Removed "${product.name}" from your wishlist.`);
+            } else {
+                wishlist.push(productId);
+                showToast(`Added "${product.name}" to your wishlist.`);
+            }
+            renderProducts();
+            updateWishlistUI();
+        }
+
+        function updateWishlistUI() {
+            document.getElementById('wishlist-badge').textContent = wishlist.length;
+        }
+
+        function openWishlistModal() {
+            const modal = document.getElementById('wishlist-modal');
+            const container = document.getElementById('wishlist-items-container');
+
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-luxury-mutedgray">
+                        <i class="fa-regular fa-heart text-4xl text-luxury-rosegold/50 mb-3"></i>
+                        <p class="text-xs tracking-wider uppercase font-semibold">Your wishlist is currently empty.</p>
+                    </div>
+                `;
+            } else {
+                const wishlistedProducts = products.filter(p => wishlist.includes(p.id));
+                container.innerHTML = wishlistedProducts.map(item => `
+                    <div class="flex items-center justify-between space-x-4 p-3 rounded-xl bg-luxury-offwhite border border-luxury-champagne/20 shadow-sm">
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-editorial text-base text-luxury-darkbrown font-semibold truncate">${item.name}</h4>
+                            <span class="text-xs text-luxury-champagne font-bold">${formatPKR(item.price)}</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="addToCart(${item.id}); toggleWishlist(${item.id}); closeWishlistModal();" class="px-3 py-1.5 rounded-full bg-luxury-darkbrown text-white text-[10px] uppercase font-bold tracking-wider hover:bg-luxury-champagne hover:text-luxury-darkbrown transition-all">
+                                Add to Bag
+                            </button>
+                            <button onclick="toggleWishlist(${item.id})" class="text-luxury-mutedgray hover:text-luxury-rosegold p-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeWishlistModal() {
+            document.getElementById('wishlist-modal').classList.add('hidden');
+        }
+
+        function showPolicyModal(type) {
+            const modal = document.getElementById('policy-modal');
+            const titleEl = document.getElementById('policy-title');
+            const bodyEl = document.getElementById('policy-body');
+
+            if (type === 'privacy') {
+                titleEl.textContent = "Privacy Policy";
+                bodyEl.innerHTML = `<p>At AURA & ESSENCE, we treat your personal information with utmost discretion and confidentiality. We collect only necessary details to fulfill your orders and elevate your bespoke shopping experience.</p>`;
+            } else if (type === 'terms') {
+                titleEl.textContent = "Terms & Conditions";
+                bodyEl.innerHTML = `<p>All intellectual property, imagery, and proprietary designs displayed remain the exclusive property of AURA & ESSENCE. Prices are listed in PKR.</p>`;
+            } else if (type === 'shipping') {
+                titleEl.textContent = "Shipping & Returns";
+                bodyEl.innerHTML = `<p>We provide complimentary express delivery across Pakistan for all orders over PKR 10,000. Returns are accepted within 7 days for unopened or unworn items.</p>`;
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closePolicyModal() {
+            document.getElementById('policy-modal').classList.add('hidden');
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-luxury-darkbrown text-white px-5 py-3 rounded-xl border border-luxury-champagne/40 shadow-2xl text-xs tracking-wider flex items-center space-x-3 transform translate-y-4 opacity-0 transition-all duration-300 font-medium';
+            toast.innerHTML = `<i class="fa-solid fa-gem text-luxury-champagne"></i><span>${message}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => { toast.classList.remove('translate-y-4', 'opacity-0'); }, 50);
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
