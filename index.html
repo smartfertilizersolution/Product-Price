@@ -112,12 +112,39 @@
         }
         .contact-top a:hover { color: var(--accent-gold); }
 
+
 .hero {
+    background: transparent;
     padding: 50px 5% 40px;
     color: var(--text-light);
     text-align: center;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+}
+
+/* Refinery video background */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Red overlay for readable text */
+
+.hero {
+    background: transparent;
+    padding: 50px 5% 40px;
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
     z-index: 1;
 }
 
@@ -127,20 +154,22 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+@media (max-width: 768px) {
+    .hero-video {
+        transform: scale(1.25);
+    }
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(35, 0, 0, 0.38);
-    z-index: 1;
-}
-
-.hero > :not(.hero-video) {
-    position: relative;
-    z-index: 2;
+@keyframes heroShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
         .hero h2 {
             font-size: 2.5rem;
@@ -643,9 +672,10 @@ window.addEventListener("load", function(){
 </div>
 
 <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-        <source src="refinery.mp4" type="video/mp4">
-    </video>
+<video class="hero-video" autoplay muted loop playsinline>
+    <source src="refinery.mp4" type="video/mp4">
+</video>
+
     <h2>Global Trading Facilitation</h2>
     <h3 class="tagline">Urea &bull; Sulfur &bull; DAP &bull; ICUMA-45 Sugar &bull; Diesel EN590 &bull; Jet A1 &bull; ESPO Crude Oil &bull; LPG &bull; LNG &bull; Aviation Kerosene (JP54) &bull; Bitumen &bull; Automotive Urea</h3>
     <div class="validity-box">
